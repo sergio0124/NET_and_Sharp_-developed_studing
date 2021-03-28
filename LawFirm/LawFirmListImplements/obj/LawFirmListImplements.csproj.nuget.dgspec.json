@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mvideo\\source\\repos\\LawFirm\\LawFirmListImplements\\LawFirmListImplements.csproj": {}
+    "C:\\Users\\Mvideo\\Desktop\\4 семестр\\Технологии программирования\\Reznikov-S.A.-Csharp2\\LawFirm\\LawFirmListImplements\\LawFirmListImplements.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mvideo\\source\\repos\\LawFirm\\LawFirmBusinessLogic\\LawFirmBusinessLogic.csproj": {
+    "C:\\Users\\Mvideo\\Desktop\\4 семестр\\Технологии программирования\\Reznikov-S.A.-Csharp2\\LawFirm\\LawFirmBusinessLogic\\LawFirmBusinessLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mvideo\\source\\repos\\LawFirm\\LawFirmBusinessLogic\\LawFirmBusinessLogic.csproj",
+        "projectUniqueName": "C:\\Users\\Mvideo\\Desktop\\4 семестр\\Технологии программирования\\Reznikov-S.A.-Csharp2\\LawFirm\\LawFirmBusinessLogic\\LawFirmBusinessLogic.csproj",
         "projectName": "LawFirmBusinessLogic",
-        "projectPath": "C:\\Users\\Mvideo\\source\\repos\\LawFirm\\LawFirmBusinessLogic\\LawFirmBusinessLogic.csproj",
+        "projectPath": "C:\\Users\\Mvideo\\Desktop\\4 семестр\\Технологии программирования\\Reznikov-S.A.-Csharp2\\LawFirm\\LawFirmBusinessLogic\\LawFirmBusinessLogic.csproj",
         "packagesPath": "C:\\Users\\Mvideo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mvideo\\source\\repos\\LawFirm\\LawFirmBusinessLogic\\obj\\",
+        "outputPath": "C:\\Users\\Mvideo\\Desktop\\4 семестр\\Технологии программирования\\Reznikov-S.A.-Csharp2\\LawFirm\\LawFirmBusinessLogic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -64,14 +64,14 @@
         }
       }
     },
-    "C:\\Users\\Mvideo\\source\\repos\\LawFirm\\LawFirmListImplements\\LawFirmListImplements.csproj": {
+    "C:\\Users\\Mvideo\\Desktop\\4 семестр\\Технологии программирования\\Reznikov-S.A.-Csharp2\\LawFirm\\LawFirmListImplements\\LawFirmListImplements.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mvideo\\source\\repos\\LawFirm\\LawFirmListImplements\\LawFirmListImplements.csproj",
+        "projectUniqueName": "C:\\Users\\Mvideo\\Desktop\\4 семестр\\Технологии программирования\\Reznikov-S.A.-Csharp2\\LawFirm\\LawFirmListImplements\\LawFirmListImplements.csproj",
         "projectName": "LawFirmListImplements",
-        "projectPath": "C:\\Users\\Mvideo\\source\\repos\\LawFirm\\LawFirmListImplements\\LawFirmListImplements.csproj",
+        "projectPath": "C:\\Users\\Mvideo\\Desktop\\4 семестр\\Технологии программирования\\Reznikov-S.A.-Csharp2\\LawFirm\\LawFirmListImplements\\LawFirmListImplements.csproj",
         "packagesPath": "C:\\Users\\Mvideo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mvideo\\source\\repos\\LawFirm\\LawFirmListImplements\\obj\\",
+        "outputPath": "C:\\Users\\Mvideo\\Desktop\\4 семестр\\Технологии программирования\\Reznikov-S.A.-Csharp2\\LawFirm\\LawFirmListImplements\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -91,8 +91,8 @@
           "netstandard2.0": {
             "targetAlias": "netstandard2.0",
             "projectReferences": {
-              "C:\\Users\\Mvideo\\source\\repos\\LawFirm\\LawFirmBusinessLogic\\LawFirmBusinessLogic.csproj": {
-                "projectPath": "C:\\Users\\Mvideo\\source\\repos\\LawFirm\\LawFirmBusinessLogic\\LawFirmBusinessLogic.csproj"
+              "C:\\Users\\Mvideo\\Desktop\\4 семестр\\Технологии программирования\\Reznikov-S.A.-Csharp2\\LawFirm\\LawFirmBusinessLogic\\LawFirmBusinessLogic.csproj": {
+                "projectPath": "C:\\Users\\Mvideo\\Desktop\\4 семестр\\Технологии программирования\\Reznikov-S.A.-Csharp2\\LawFirm\\LawFirmBusinessLogic\\LawFirmBusinessLogic.csproj"
               }
             }
           }

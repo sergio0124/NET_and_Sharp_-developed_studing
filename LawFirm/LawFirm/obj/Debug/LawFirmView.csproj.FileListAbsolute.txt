@@ -26,3 +26,33 @@ C:\Users\Mvideo\source\repos\LawFirm\LawFirm\bin\Debug\Unity.Container.pdb
 C:\Users\Mvideo\source\repos\LawFirm\LawFirm\obj\Debug\LawFirmView.csproj.CopyComplete
 C:\Users\Mvideo\source\repos\LawFirm\LawFirm\obj\Debug\LawFirm.exe
 C:\Users\Mvideo\source\repos\LawFirm\LawFirm\obj\Debug\LawFirm.pdb
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\bin\Debug\LawFirm.exe.config
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\bin\Debug\LawFirm.exe
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\bin\Debug\LawFirm.pdb
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\bin\Debug\LawFirmBusinessLogic.dll
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\bin\Debug\LawFirmListImplements.dll
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\bin\Debug\Unity.Abstractions.dll
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\bin\Debug\Unity.Container.dll
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\bin\Debug\LawFirmBusinessLogic.pdb
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\bin\Debug\LawFirmListImplements.pdb
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\bin\Debug\Unity.Abstractions.pdb
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\bin\Debug\Unity.Container.pdb
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\obj\Debug\LawFirmView.csprojAssemblyReference.cache
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\obj\Debug\LawFirmView.FormBlank.resources
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\obj\Debug\LawFirmView.FormBlanks.resources
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\obj\Debug\LawFirmView.FormCreateOrder.resources
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\obj\Debug\LawFirmView.FormDocument.resources
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\obj\Debug\LawFirmView.FormDocumentBlank.resources
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\obj\Debug\LawFirmView.FormDocuments.resources
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\obj\Debug\LawFirmView.FormMain.resources
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\obj\Debug\LawFirm.Properties.Resources.resources
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\obj\Debug\LawFirmView.csproj.GenerateResource.cache
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\obj\Debug\LawFirmView.csproj.CoreCompileInputs.cache
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\obj\Debug\LawFirmView.csproj.CopyComplete
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\obj\Debug\LawFirm.exe
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\obj\Debug\LawFirm.pdb
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\bin\Debug\LawFirmFileImplement.dll
+C:\Users\Mvideo\Desktop\4 семестр\Технологии программирования\Reznikov-S.A.-Csharp2\LawFirm\LawFirm\bin\Debug\LawFirmFileImplement.pdb
