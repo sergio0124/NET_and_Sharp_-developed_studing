@@ -1,0 +1,9 @@
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmBusinessLogic\bin\Debug\netstandard2.0\LawFirmBusinessLogic.deps.json
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmBusinessLogic\bin\Debug\netstandard2.0\LawFirmBusinessLogic.dll
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmBusinessLogic\bin\Debug\netstandard2.0\LawFirmBusinessLogic.pdb
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmBusinessLogic\obj\Debug\netstandard2.0\LawFirmBusinessLogic.csprojAssemblyReference.cache
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmBusinessLogic\obj\Debug\netstandard2.0\LawFirmBusinessLogic.AssemblyInfoInputs.cache
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmBusinessLogic\obj\Debug\netstandard2.0\LawFirmBusinessLogic.AssemblyInfo.cs
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmBusinessLogic\obj\Debug\netstandard2.0\LawFirmBusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmBusinessLogic\obj\Debug\netstandard2.0\LawFirmBusinessLogic.dll
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmBusinessLogic\obj\Debug\netstandard2.0\LawFirmBusinessLogic.pdb

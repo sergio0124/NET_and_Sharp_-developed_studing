@@ -1,0 +1,12 @@
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmListImplements\bin\Debug\netstandard2.0\LawFirmListImplements.deps.json
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmListImplements\bin\Debug\netstandard2.0\LawFirmListImplements.dll
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmListImplements\bin\Debug\netstandard2.0\LawFirmListImplements.pdb
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmListImplements\bin\Debug\netstandard2.0\LawFirmBusinessLogic.dll
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmListImplements\bin\Debug\netstandard2.0\LawFirmBusinessLogic.pdb
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmListImplements\obj\Debug\netstandard2.0\LawFirmListImplements.csprojAssemblyReference.cache
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmListImplements\obj\Debug\netstandard2.0\LawFirmListImplements.AssemblyInfoInputs.cache
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmListImplements\obj\Debug\netstandard2.0\LawFirmListImplements.AssemblyInfo.cs
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmListImplements\obj\Debug\netstandard2.0\LawFirmListImplements.csproj.CoreCompileInputs.cache
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmListImplements\obj\Debug\netstandard2.0\LawFirmListImplements.csproj.CopyComplete
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmListImplements\obj\Debug\netstandard2.0\LawFirmListImplements.dll
+C:\Users\Mvideo\source\repos\LawFirm\LawFirmListImplements\obj\Debug\netstandard2.0\LawFirmListImplements.pdb
