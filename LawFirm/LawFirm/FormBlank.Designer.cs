@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private void InitializeBlank()
         {
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
@@ -81,7 +81,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormBlank";
             this.Text = "Бланк";
-            this.Load += new System.EventHandler(this.FormComponent_Load);
+            this.Load += new System.EventHandler(this.FormBlank_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

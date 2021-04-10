@@ -14,10 +14,10 @@ namespace LawFirmView
         private int? id;
         public FormBlank(BlankLogic logic)
         {
-            InitializeComponent();
+            InitializeBlank();
             this.logic = logic;
         }
-        private void FormComponent_Load(object sender, EventArgs e)
+        private void FormBlank_Load(object sender, EventArgs e)
         {
             if (id.HasValue)
 
