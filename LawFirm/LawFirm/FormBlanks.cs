@@ -12,10 +12,10 @@ namespace LawFirmView
         private readonly BlankLogic logic;
         public FormBlanks(BlankLogic logic)
         {
-            InitializeBlanks();
+            InitializeComponent();
             this.logic = logic;
         }
-        private void FormBlanks_Load(object sender, EventArgs e)
+        private void FormComponents_Load(object sender, EventArgs e)
         {
             LoadData();
         }

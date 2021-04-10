@@ -64,11 +64,11 @@ public void Insert(DocumentBindingModel model)
                 DocumentBlanks = new
             Dictionary<int, int>()
             };
-            foreach (var document in source.Documents)
+            foreach (var product in source.Documents)
             {
-                if (document.Id >= tempDocument.Id)
+                if (product.Id >= tempDocument.Id)
                 {
-                    tempDocument.Id = document.Id + 1;
+                    tempDocument.Id = product.Id + 1;
                 }
             }
             source.Documents.Add(CreateModel(model, tempDocument));
@@ -134,27 +134,27 @@ public void Insert(DocumentBindingModel model)
         {
             // требуется дополнительно получить список компонентов для изделия с
             //названиями и их количество
-        Dictionary<int, (string, int)> documentBlanks = new
+        Dictionary<int, (string, int)> productComponents = new
         Dictionary<int, (string, int)>();
             foreach (var db in document.DocumentBlanks)
             {
-                string blankName = string.Empty;
-                foreach (var blank in source.Blanks)
+                string componentName = string.Empty;
+                foreach (var component in source.Blanks)
                 {
-                    if (db.Key == blank.Id)
+                    if (db.Key == component.Id)
                     {
-                        blankName = blank.BlankName;
+                        componentName = component.BlankName;
                         break;
                     }
                 }
-                documentBlanks.Add(db.Key, (blankName, db.Value));
+                productComponents.Add(db.Key, (componentName, db.Value));
             }
             return new DocumentViewModel
             {
                 Id = document.Id,
                 DocumentName = document.DocumentName,
                 Price = document.Price,
-                DocumentBlanks = documentBlanks
+                DocumentBlanks = productComponents
             };
         }
     }

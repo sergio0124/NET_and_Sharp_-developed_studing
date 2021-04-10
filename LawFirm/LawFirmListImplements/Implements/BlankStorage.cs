@@ -17,9 +17,9 @@ namespace LawFirmListImplement.Implements
         public List<BlankViewModel> GetFullList()
         {
             List<BlankViewModel> result = new List<BlankViewModel>();
-            foreach (var blank in source.Blanks)
+            foreach (var component in source.Blanks)
             {
-                result.Add(CreateModel(blank));
+                result.Add(CreateModel(component));
             }
             return result;
         }
@@ -30,11 +30,11 @@ namespace LawFirmListImplement.Implements
                 return null;
             }
             List<BlankViewModel> result = new List<BlankViewModel>();
-            foreach (var blank in source.Blanks)
+            foreach (var component in source.Blanks)
             {
-                if (blank.BlankName.Contains(model.BlankName))
+                if (component.BlankName.Contains(model.BlankName))
                 {
-                    result.Add(CreateModel(blank));
+                    result.Add(CreateModel(component));
                 }
             }
             return result;
@@ -45,37 +45,37 @@ namespace LawFirmListImplement.Implements
             {
                 return null;
             }
-            foreach (var blank in source.Blanks)
+            foreach (var component in source.Blanks)
             {
-                if (blank.Id == model.Id || blank.BlankName ==
+                if (component.Id == model.Id || component.BlankName ==
                model.BlankName)
                 {
-                    return CreateModel(blank);
+                    return CreateModel(component);
                 }
             }
             return null;
         }
         public void Insert(BlankBindingModel model)
         {
-            Blank tempBlank = new Blank { Id = 1 };
-            foreach (var blank in source.Blanks)
+            Blank tempComponent = new Blank { Id = 1 };
+            foreach (var component in source.Blanks)
             {
-                if (blank.Id >= tempBlank.Id)
+                if (component.Id >= tempComponent.Id)
                 {
-                    tempBlank.Id = blank.Id + 1;
+                    tempComponent.Id = component.Id + 1;
                 }
             }
-            source.Blanks.Add(CreateModel(model, tempBlank));
+            source.Blanks.Add(CreateModel(model, tempComponent));
         }
         public void Update(BlankBindingModel model)
         {
 
             Blank tempBlank = null;
-            foreach (var blank in source.Blanks)
+            foreach (var component in source.Blanks)
             {
-                if (blank.Id == model.Id)
+                if (component.Id == model.Id)
                 {
-                    tempBlank = blank;
+                    tempBlank = component;
                 }
             }
             if (tempBlank == null)
@@ -101,12 +101,12 @@ namespace LawFirmListImplement.Implements
             blank.BlankName = model.BlankName;
             return blank;
         }
-        private BlankViewModel CreateModel(Blank blank)
+        private BlankViewModel CreateModel(Blank component)
         {
             return new BlankViewModel
             {
-                Id = blank.Id,
-                BlankName = blank.BlankName
+                Id = component.Id,
+                BlankName = component.BlankName
             };
         }
     }
