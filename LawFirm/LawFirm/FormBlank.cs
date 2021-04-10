@@ -17,7 +17,7 @@ namespace LawFirmView
             InitializeComponent();
             this.logic = logic;
         }
-        private void FormComponent_Load(object sender, EventArgs e)
+        private void FormBlank_Load(object sender, EventArgs e)
         {
             if (id.HasValue)
 

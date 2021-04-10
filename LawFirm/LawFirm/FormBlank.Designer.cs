@@ -81,7 +81,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormBlank";
             this.Text = "Бланк";
-            this.Load += new System.EventHandler(this.FormComponent_Load);
+            this.Load += new System.EventHandler(this.FormBlank_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -15,7 +15,7 @@ namespace LawFirmView
             InitializeComponent();
             this.logic = logic;
         }
-        private void FormComponents_Load(object sender, EventArgs e)
+        private void FormBlanks_Load(object sender, EventArgs e)
         {
             LoadData();
         }

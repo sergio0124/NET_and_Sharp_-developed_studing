@@ -134,27 +134,27 @@ public void Insert(DocumentBindingModel model)
         {
             // требуется дополнительно получить список компонентов для изделия с
             //названиями и их количество
-        Dictionary<int, (string, int)> productComponents = new
+        Dictionary<int, (string, int)> documentBlanks = new
         Dictionary<int, (string, int)>();
             foreach (var db in document.DocumentBlanks)
             {
-                string componentName = string.Empty;
-                foreach (var component in source.Blanks)
+                string blankName = string.Empty;
+                foreach (var blank in source.Blanks)
                 {
-                    if (db.Key == component.Id)
+                    if (db.Key == blank.Id)
                     {
-                        componentName = component.BlankName;
+                        blankName = blank.BlankName;
                         break;
                     }
                 }
-                productComponents.Add(db.Key, (componentName, db.Value));
+                documentBlanks.Add(db.Key, (blankName, db.Value));
             }
             return new DocumentViewModel
             {
                 Id = document.Id,
                 DocumentName = document.DocumentName,
                 Price = document.Price,
-                DocumentBlanks = productComponents
+                DocumentBlanks = documentBlanks
             };
         }
     }
