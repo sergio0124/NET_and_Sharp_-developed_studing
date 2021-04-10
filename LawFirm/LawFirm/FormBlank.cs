@@ -14,7 +14,7 @@ namespace LawFirmView
         private int? id;
         public FormBlank(BlankLogic logic)
         {
-            InitializeBlank();
+            InitializeComponent();
             this.logic = logic;
         }
         private void FormBlank_Load(object sender, EventArgs e)
