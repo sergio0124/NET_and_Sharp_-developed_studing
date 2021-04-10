@@ -46,13 +46,13 @@ namespace LawFirmView
                 try
                 {
                     int id = Convert.ToInt32(comboBoxDocument.SelectedValue);
-                    DocumentViewModel document = _logicD.Read(new DocumentBindingModel
+                    DocumentViewModel product = _logicD.Read(new DocumentBindingModel
                     {
                         Id
                     = id
                     })?[0];
                     int count = Convert.ToInt32(textBoxCount.Text);
-                    textBoxSum.Text = (count * document?.Price ?? 0).ToString();
+                    textBoxSum.Text = (count * product?.Price ?? 0).ToString();
                 }
                 catch (Exception ex)
                 {
@@ -87,10 +87,11 @@ namespace LawFirmView
             {
                 _logicO.CreateOrder(new CreateOrderBindingModel
                 {
+                    Sum = _logicD.Read(new DocumentBindingModel {
+                        Id = Convert.ToInt32(comboBoxDocument.SelectedValue) })[0].Price * Convert.ToInt32(textBoxCount.Text),
                     DocumentId = Convert.ToInt32(comboBoxDocument.SelectedValue),
-                    Sum = Convert.ToInt32(textBoxSum.Text),
                     Count = Convert.ToInt32(textBoxCount.Text)
-                }) ;
+                }) ; 
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение",
                MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
