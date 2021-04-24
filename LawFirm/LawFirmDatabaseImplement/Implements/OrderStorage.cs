@@ -50,7 +50,7 @@ namespace LawFirmDatabaseImplement.Implements
                     DateCreate=order.DateCreate,
                     DateImplement=order.DateImplement,
                     Sum=order.Sum,
-                    DocumentName = order.Document.DocumentName,
+                    DocumentName = context.Documents.FirstOrDefault(rec=>rec.Id==order.DocumentId)?.DocumentName,
                     DocumentId =order.DocumentId                   
                 } :
                null;
@@ -66,8 +66,8 @@ namespace LawFirmDatabaseImplement.Implements
             using (var context = new LawFirmDatabase())
             {
                 return context.Orders
-               .Where(rec => rec.Id==model.Id)
-               .ToList()
+               .Where(rec => rec.Id==model.Id || rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo)
+               .Include(rec=>rec.Document)
                .Select(rec => new OrderViewModel
                {
                    Id = rec.Id,
@@ -88,13 +88,12 @@ namespace LawFirmDatabaseImplement.Implements
             using (var context = new LawFirmDatabase())
             {
                 return context.Orders
-               .ToList()
                .Select(rec => new OrderViewModel
                {
                    Id = rec.Id,
                    Count = rec.Count,
                    DocumentId = rec.DocumentId,
-                   DocumentName = context.Documents.FirstOrDefault(recrec => recrec.Id == rec.DocumentId).DocumentName,
+                   DocumentName = rec.Document.DocumentName,
                    DateImplement = rec.DateImplement,
                    DateCreate = rec.DateCreate,
                    Status = rec.Status,

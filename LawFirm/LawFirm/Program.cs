@@ -34,6 +34,8 @@ namespace LawFirmView
             currentContainer.RegisterType<OrderLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<DocumentLogic>(new
            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ReportLogic>(new
+                HierarchicalLifetimeManager());
             return currentContainer;
         }
 
