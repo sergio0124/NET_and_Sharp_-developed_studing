@@ -51,11 +51,12 @@ namespace LawFirmView
             this.BlankId,
             this.Blank,
             this.Count});
-            this.dataGridView.Location = new System.Drawing.Point(12, 73);
+            this.dataGridView.Location = new System.Drawing.Point(16, 90);
+            this.dataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowHeadersWidth = 51;
-            this.dataGridView.Size = new System.Drawing.Size(380, 283);
+            this.dataGridView.Size = new System.Drawing.Size(507, 348);
             this.dataGridView.TabIndex = 26;
             // 
             // BlankId
@@ -80,9 +81,10 @@ namespace LawFirmView
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(317, 363);
+            this.buttonCancel.Location = new System.Drawing.Point(423, 447);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.Size = new System.Drawing.Size(100, 28);
             this.buttonCancel.TabIndex = 30;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -90,9 +92,10 @@ namespace LawFirmView
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(236, 363);
+            this.buttonSave.Location = new System.Drawing.Point(315, 447);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.Size = new System.Drawing.Size(100, 28);
             this.buttonSave.TabIndex = 29;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -100,41 +103,45 @@ namespace LawFirmView
             // 
             // textBoxManager
             // 
-            this.textBoxManager.Location = new System.Drawing.Point(104, 34);
+            this.textBoxManager.Location = new System.Drawing.Point(139, 42);
+            this.textBoxManager.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxManager.Name = "textBoxManager";
-            this.textBoxManager.Size = new System.Drawing.Size(188, 20);
+            this.textBoxManager.Size = new System.Drawing.Size(249, 22);
             this.textBoxManager.TabIndex = 32;
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(104, 8);
+            this.textBoxName.Location = new System.Drawing.Point(139, 10);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(188, 20);
+            this.textBoxName.Size = new System.Drawing.Size(249, 22);
             this.textBoxName.TabIndex = 31;
             // 
             // labelManager
             // 
             this.labelManager.AutoSize = true;
-            this.labelManager.Location = new System.Drawing.Point(12, 34);
+            this.labelManager.Location = new System.Drawing.Point(16, 42);
+            this.labelManager.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelManager.Name = "labelManager";
-            this.labelManager.Size = new System.Drawing.Size(89, 13);
+            this.labelManager.Size = new System.Drawing.Size(115, 17);
             this.labelManager.TabIndex = 28;
             this.labelManager.Text = "Ответственный:";
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(12, 12);
+            this.labelName.Location = new System.Drawing.Point(16, 15);
+            this.labelName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(60, 13);
+            this.labelName.Size = new System.Drawing.Size(76, 17);
             this.labelName.TabIndex = 27;
             this.labelName.Text = "Название:";
             // 
             // FormStorage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 396);
+            this.ClientSize = new System.Drawing.Size(544, 487);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
@@ -142,8 +149,9 @@ namespace LawFirmView
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.labelManager);
             this.Controls.Add(this.labelName);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormStorage";
-            this.Text = "FormStorage";
+            this.Text = "Работа со складом";
             this.Load += new System.EventHandler(this.FormStorage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

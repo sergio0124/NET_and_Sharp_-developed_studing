@@ -4,7 +4,6 @@ using LawFirmBusinessLogic.BindingModels;
 using LawFirmBusinessLogic.Enums;
 using LawFirmBusinessLogic.Interfaces;
 using LawFirmBusinessLogic.ViewModels;
-using System.Text;
 
 namespace LawFirmBusinessLogic.BusinessLogic
 {
