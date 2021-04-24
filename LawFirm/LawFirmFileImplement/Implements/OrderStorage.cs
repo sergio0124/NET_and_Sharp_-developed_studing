@@ -1,7 +1,7 @@
 ﻿using LawFirmBusinessLogic.BindingModels;
 using LawFirmBusinessLogic.Interfaces;
 using LawFirmBusinessLogic.ViewModels;
-using LawFirmListImplement.Models;
+using LawFirmFileImplement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -119,6 +119,7 @@ namespace LawFirmFileImplement.Implements
 		private Order CreateModel(OrderBindingModel model, Order order)
 		{
 			order.DocumentId = model.DocumentId;
+			order.ClientId = model.ClientId;
 			order.Sum = model.Sum;
 			order.Count = model.Count;
 			order.Status = model.Status;
@@ -130,16 +131,17 @@ namespace LawFirmFileImplement.Implements
 
 		private OrderViewModel CreateModel(Order order)
 		{
-			string documentName = source.Documents.FirstOrDefault(rec => rec.Id == order.DocumentId).DocumentName;
+			string documentName = source.Documents.FirstOrDefault(rec => rec.Id == order.DocumentId)?.DocumentName;
 			return new OrderViewModel
 			{
 				Id = order.Id,
 				DocumentId = order.DocumentId,
+				ClientId = (int)order.ClientId,
 				Sum = order.Sum,
 				Count = order.Count,
-				DocumentName = documentName,
 				Status = order.Status,
 				DateCreate = order.DateCreate,
+				DocumentName=documentName,
 				DateImplement = order.DateImplement
 			};
 		}
