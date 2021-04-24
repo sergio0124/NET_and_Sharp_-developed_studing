@@ -1,4 +1,4 @@
-﻿using LawFirmListImplement.Models;
+﻿using LawFirmFileImplement.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 using System.Text;
 using LawFirmBusinessLogic.Enums;
 
-namespace LawFirmFileImplement
+namespace LawFirmFileImplement.Implements
 {
     public class FileDataListSingleton
     {
@@ -16,9 +16,11 @@ namespace LawFirmFileImplement
         private readonly string BlankFileName = "Blank.xml";
         private readonly string OrderFileName = "Order.xml";
         private readonly string DocumentFileName = "Document.xml";
+        private readonly string ClientFileName = "Client.xml";
         public List<Blank> Blanks { get; set; }
         public List<Order> Orders { get; set; }
         public List<Document> Documents { get; set; }
+        public List<Client> Clients { set; get; }
         public object Blank { get; internal set; }
 
         private FileDataListSingleton()
@@ -26,6 +28,7 @@ namespace LawFirmFileImplement
             Blanks = LoadBlanks();
             Orders = LoadOrders();
             Documents = LoadDocuments();
+            Clients = LoadClients();
         }
         public static FileDataListSingleton GetInstance()
         {
@@ -40,6 +43,7 @@ namespace LawFirmFileImplement
             SaveBlanks();
             SaveOrders();
             SaveDocuments();
+            SaveClients();
         }
         private List<Blank> LoadBlanks()
         {
@@ -70,7 +74,7 @@ namespace LawFirmFileImplement
 
                 foreach (var elem in xElements)
                 {
-                    OrderStatus status=(OrderStatus)0;
+                    OrderStatus status = (OrderStatus)0;
                     switch ((elem.Element("Status").Value))
                     {
                         case "Принят":
@@ -89,11 +93,12 @@ namespace LawFirmFileImplement
                     list.Add(new Order
                     {
                         Id = Convert.ToInt32(elem.Attribute("Id").Value),
-                        Sum = Convert.ToInt32(elem.Element("Sum").Value),
+                        Sum = Convert.ToDecimal(elem.Element("Sum").Value),
+                        ClientId = Convert.ToInt32(elem.Element("ClientId").Value),
                         DocumentId = Convert.ToInt32(elem.Element("DocumentId").Value),
                         Count = Convert.ToInt32(elem.Element("Count").Value),
                         DateCreate = Convert.ToDateTime(elem.Element("DateCreate").Value),
-                        DateImplement = Convert.ToDateTime(elem.Element("DateImplement").Value),                      
+                        DateImplement = Convert.ToDateTime(elem.Element("DateImplement").Value),
                         Status = status
                     });
                 }
@@ -127,6 +132,26 @@ namespace LawFirmFileImplement
             }
             return list;
         }
+        private List<Client> LoadClients()
+        {
+            var list = new List<Client>();
+            if (File.Exists(ClientFileName))
+            {
+                XDocument xDocument = XDocument.Load(ClientFileName);
+                var xElements = xDocument.Root.Elements("Clients").ToList();
+                foreach (var elem in xElements)
+                {
+                    list.Add(new Client
+                    {
+                        Id = Convert.ToInt32(elem.Attribute("Id").Value),
+                        ClientFIO = elem.Element("ClientFIO").Value,
+                        Email = elem.Element("Email").Value,
+                        Password = elem.Element("Password").Value
+                    });
+                }
+            }
+            return list;
+        }
         private void SaveBlanks()
         {
             if (Blanks != null)
@@ -153,6 +178,7 @@ namespace LawFirmFileImplement
                     xElement.Add(new XElement("Order",
                     new XAttribute("Id", order.Id),
                     new XElement("DocumentId", order.DocumentId),
+                    new XElement("ClientId", order.ClientId),
                     new XElement("Sum", order.Sum),
                     new XElement("Count", order.Count),
                     new XElement("DateCreate", order.DateCreate),
@@ -186,6 +212,23 @@ namespace LawFirmFileImplement
                 }
                 XDocument xDocument = new XDocument(xElement);
                 xDocument.Save(DocumentFileName);
+            }
+        }
+        private void SaveClients()
+        {
+            if (Clients != null)
+            {
+                var xElement = new XElement("Clients");
+                foreach (var client in Clients)
+                {
+                    xElement.Add(new XElement("Client",
+                    new XAttribute("Id", client.Id),
+                    new XElement("ClientFIO", client.ClientFIO),
+                    new XElement("Email", client.Email),
+                    new XElement("Password", client.Password)));
+                }
+                XDocument xDocument = new XDocument(xElement);
+                xDocument.Save(ClientFileName);
             }
         }
     }
