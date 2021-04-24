@@ -38,7 +38,7 @@ namespace LawFirmListImplement.Implements
             List<OrderViewModel> result = new List<OrderViewModel>();
             foreach (var order in source.Orders)
             {
-                if (order.DocumentId == model.DocumentId)
+                if (order.Id==model.Id || order.DateCreate >= model.DateFrom && order.DateCreate <= model.DateTo)
                 {
                     result.Add(CreateModel(order));
                 }
@@ -122,7 +122,7 @@ namespace LawFirmListImplement.Implements
 
         private OrderViewModel CreateModel(Order order)
         {
-            string documentName = source.Documents.FirstOrDefault(rec => rec.Id == order.DocumentId).DocumentName;
+            string documentName = source.Documents.FirstOrDefault(rec => rec.Id == order.DocumentId)?.DocumentName;
             return new OrderViewModel
             {
                 Id = order.Id,
