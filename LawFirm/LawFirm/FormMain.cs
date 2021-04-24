@@ -123,5 +123,16 @@ namespace LawFirmView
             var form = Container.Resolve<FormStorageReplenishment>();
             form.ShowDialog();
         }
+        private void складыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormStorages>();
+            form.ShowDialog();
+        }
+
+        private void пополнениеСкладаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormStorageReplenishment>();
+            form.ShowDialog();
+        }
     }
 }
