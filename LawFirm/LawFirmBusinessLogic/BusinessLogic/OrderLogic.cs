@@ -10,6 +10,7 @@ namespace LawFirmBusinessLogic.BusinessLogic
 {
     public class OrderLogic
     {
+        private readonly object locker = new object();
         private readonly IOrderStorage _orderStorage;
         public OrderLogic(IOrderStorage orderStorage)
         {
@@ -41,30 +42,38 @@ namespace LawFirmBusinessLogic.BusinessLogic
         }
         public void TakeOrderInWork(ChangeStatusBindingModel model)
         {
-            var order = _orderStorage.GetElement(new OrderBindingModel
+            lock (locker)
             {
-                Id =
-           model.OrderId
-            });
-            if (order == null)
-            {
-                throw new Exception("Не найден заказ");
+                var order = _orderStorage.GetElement(new OrderBindingModel
+                {
+                    Id = model.OrderId
+                });
+                if (order == null)
+                {
+                    throw new Exception("Не найден заказ");
+                }
+                if (order.Status != OrderStatus.Принят)
+                {
+                    throw new Exception("Заказ не в статусе \"Принят\"");
+                }
+                if (order.ImplementerId.HasValue)
+                {
+                    throw new Exception("У заказа уже есть исполнитель");
+                }
+
+                _orderStorage.Update(new OrderBindingModel
+                {
+                    Id = order.Id,
+                    ClientId = order.ClientId,
+                    ImplementerId = model.ImplementerId,
+                    DocumentId = order.DocumentId,
+                    Count = order.Count,
+                    Sum = order.Sum,
+                    DateCreate = order.DateCreate,
+                    DateImplement = DateTime.Now,
+                    Status = OrderStatus.Выполняется
+                });
             }
-            if (order.Status != OrderStatus.Принят)
-            {
-                throw new Exception("Заказ не в статусе \"Принят\"");
-            }
-            _orderStorage.Update(new OrderBindingModel
-            {
-                ClientId=order.ClientId,
-                Id = order.Id,
-                Sum = order.Sum,
-                DocumentId = order.DocumentId,
-                Count = order.Count,
-                DateCreate = order.DateCreate,
-                DateImplement = DateTime.Now,
-                Status = OrderStatus.Выполняется
-            });
         }
         public void FinishOrder(ChangeStatusBindingModel model)
         {
@@ -87,6 +96,7 @@ namespace LawFirmBusinessLogic.BusinessLogic
                 Id = order.Id,
                 Sum = order.Sum,
                 DocumentId = order.DocumentId,
+                ImplementerId = order.ImplementerId,
                 Count = order.Count,
                 DateCreate = order.DateCreate,
                 DateImplement = order.DateImplement,
@@ -112,6 +122,7 @@ namespace LawFirmBusinessLogic.BusinessLogic
                 ClientId = order.ClientId,
                 Id = order.Id,
                 DocumentId = order.DocumentId,
+                ImplementerId = order.ImplementerId,
                 Sum = order.Sum,
                 Count = order.Count,
                 DateCreate = order.DateCreate,
