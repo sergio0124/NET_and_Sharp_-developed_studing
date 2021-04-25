@@ -103,6 +103,28 @@ namespace LawFirmDatabaseImplement.Migrations
                     b.ToTable("DocumentBlanks");
                 });
 
+            modelBuilder.Entity("LawFirmDatabaseImplement.Models.Implementer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ImplementerFIO")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PauseTime")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WorkingTime")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Implementers");
+                });
+
             modelBuilder.Entity("LawFirmDatabaseImplement.Models.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -125,6 +147,9 @@ namespace LawFirmDatabaseImplement.Migrations
                     b.Property<int>("DocumentId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ImplementerId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -136,6 +161,8 @@ namespace LawFirmDatabaseImplement.Migrations
                     b.HasIndex("ClientId");
 
                     b.HasIndex("DocumentId");
+
+                    b.HasIndex("ImplementerId");
 
                     b.ToTable("Orders");
                 });
@@ -168,6 +195,10 @@ namespace LawFirmDatabaseImplement.Migrations
                         .HasForeignKey("DocumentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("LawFirmDatabaseImplement.Models.Implementer", "Implementer")
+                        .WithMany("Orders")
+                        .HasForeignKey("ImplementerId");
                 });
 #pragma warning restore 612, 618
         }
