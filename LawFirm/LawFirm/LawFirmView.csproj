@@ -50,11 +50,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="Unity.Abstractions, Version=5.11.7.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.11.10\lib\net47\Unity.Abstractions.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Unity.Container, Version=5.11.11.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.11.10\lib\net47\Unity.Container.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +175,10 @@
     <ProjectReference Include="..\LawFirmBusinessLogic\LawFirmBusinessLogic.csproj">
       <Project>{6cb34952-f256-457b-a1e1-dd82262bb246}</Project>
       <Name>LawFirmBusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LawFirmFileImplement\LawFirmFileImplement.csproj">
+      <Project>{05b1fe54-2459-4248-a618-c94efc628562}</Project>
+      <Name>LawFirmFileImplement</Name>
     </ProjectReference>
     <ProjectReference Include="..\LawFirmListImplements\LawFirmListImplements.csproj">
       <Project>{b954b190-c77c-47ae-a318-d24d227e6efa}</Project>

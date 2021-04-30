@@ -39,9 +39,10 @@ namespace LawFirmView
             // 
             // buttonRef
             // 
-            this.buttonRef.Location = new System.Drawing.Point(384, 98);
+            this.buttonRef.Location = new System.Drawing.Point(512, 121);
+            this.buttonRef.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonRef.Name = "buttonRef";
-            this.buttonRef.Size = new System.Drawing.Size(80, 24);
+            this.buttonRef.Size = new System.Drawing.Size(107, 30);
             this.buttonRef.TabIndex = 19;
             this.buttonRef.Text = "Обновить";
             this.buttonRef.UseVisualStyleBackColor = true;
@@ -49,9 +50,10 @@ namespace LawFirmView
             // 
             // buttonDel
             // 
-            this.buttonDel.Location = new System.Drawing.Point(384, 68);
+            this.buttonDel.Location = new System.Drawing.Point(512, 84);
+            this.buttonDel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonDel.Name = "buttonDel";
-            this.buttonDel.Size = new System.Drawing.Size(80, 23);
+            this.buttonDel.Size = new System.Drawing.Size(107, 28);
             this.buttonDel.TabIndex = 18;
             this.buttonDel.Text = "Удалить";
             this.buttonDel.UseVisualStyleBackColor = true;
@@ -59,9 +61,10 @@ namespace LawFirmView
             // 
             // buttonUpd
             // 
-            this.buttonUpd.Location = new System.Drawing.Point(384, 41);
+            this.buttonUpd.Location = new System.Drawing.Point(512, 50);
+            this.buttonUpd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonUpd.Name = "buttonUpd";
-            this.buttonUpd.Size = new System.Drawing.Size(80, 20);
+            this.buttonUpd.Size = new System.Drawing.Size(107, 25);
             this.buttonUpd.TabIndex = 17;
             this.buttonUpd.Text = "Изменить";
             this.buttonUpd.UseVisualStyleBackColor = true;
@@ -69,9 +72,10 @@ namespace LawFirmView
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(384, 12);
+            this.buttonAdd.Location = new System.Drawing.Point(512, 15);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(80, 23);
+            this.buttonAdd.Size = new System.Drawing.Size(107, 28);
             this.buttonAdd.TabIndex = 16;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -83,24 +87,26 @@ namespace LawFirmView
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridView.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView.Location = new System.Drawing.Point(16, 15);
+            this.dataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
-            this.dataGridView.Size = new System.Drawing.Size(366, 284);
+            this.dataGridView.Size = new System.Drawing.Size(488, 350);
             this.dataGridView.TabIndex = 15;
             // 
             // FormStorages
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 308);
+            this.ClientSize = new System.Drawing.Size(632, 379);
             this.Controls.Add(this.buttonRef);
             this.Controls.Add(this.buttonDel);
             this.Controls.Add(this.buttonUpd);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.dataGridView);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormStorages";
-            this.Text = "FormStorages";
+            this.Text = "Список складов";
             this.Load += new System.EventHandler(this.FormStorages_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

@@ -42,25 +42,28 @@ namespace LawFirmView
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(8, 15);
+            this.labelName.Location = new System.Drawing.Point(11, 18);
+            this.labelName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(41, 13);
+            this.labelName.Size = new System.Drawing.Size(52, 17);
             this.labelName.TabIndex = 29;
             this.labelName.Text = "Склад:";
             // 
             // comboBoxName
             // 
             this.comboBoxName.FormattingEnabled = true;
-            this.comboBoxName.Location = new System.Drawing.Point(84, 13);
+            this.comboBoxName.Location = new System.Drawing.Point(112, 16);
+            this.comboBoxName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxName.Name = "comboBoxName";
-            this.comboBoxName.Size = new System.Drawing.Size(186, 21);
+            this.comboBoxName.Size = new System.Drawing.Size(247, 24);
             this.comboBoxName.TabIndex = 28;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(194, 89);
+            this.buttonCancel.Location = new System.Drawing.Point(259, 110);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.Size = new System.Drawing.Size(100, 28);
             this.buttonCancel.TabIndex = 27;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -68,9 +71,10 @@ namespace LawFirmView
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(114, 89);
+            this.buttonSave.Location = new System.Drawing.Point(152, 110);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.Size = new System.Drawing.Size(100, 28);
             this.buttonSave.TabIndex = 26;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -78,42 +82,46 @@ namespace LawFirmView
             // 
             // textBoxCount
             // 
-            this.textBoxCount.Location = new System.Drawing.Point(84, 65);
+            this.textBoxCount.Location = new System.Drawing.Point(112, 80);
+            this.textBoxCount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxCount.Name = "textBoxCount";
-            this.textBoxCount.Size = new System.Drawing.Size(186, 20);
+            this.textBoxCount.Size = new System.Drawing.Size(247, 22);
             this.textBoxCount.TabIndex = 25;
             // 
             // comboBoxBlank
             // 
             this.comboBoxBlank.FormattingEnabled = true;
-            this.comboBoxBlank.Location = new System.Drawing.Point(84, 39);
+            this.comboBoxBlank.Location = new System.Drawing.Point(112, 48);
+            this.comboBoxBlank.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxBlank.Name = "comboBoxBlank";
-            this.comboBoxBlank.Size = new System.Drawing.Size(186, 21);
+            this.comboBoxBlank.Size = new System.Drawing.Size(247, 24);
             this.comboBoxBlank.TabIndex = 24;
             // 
             // labelCount
             // 
             this.labelCount.AutoSize = true;
-            this.labelCount.Location = new System.Drawing.Point(8, 67);
+            this.labelCount.Location = new System.Drawing.Point(11, 82);
+            this.labelCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCount.Name = "labelCount";
-            this.labelCount.Size = new System.Drawing.Size(69, 13);
+            this.labelCount.Size = new System.Drawing.Size(90, 17);
             this.labelCount.TabIndex = 23;
             this.labelCount.Text = "Количество:";
             // 
             // labelBlank
             // 
             this.labelBlank.AutoSize = true;
-            this.labelBlank.Location = new System.Drawing.Point(8, 41);
+            this.labelBlank.Location = new System.Drawing.Point(11, 50);
+            this.labelBlank.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelBlank.Name = "labelBlank";
-            this.labelBlank.Size = new System.Drawing.Size(41, 13);
+            this.labelBlank.Size = new System.Drawing.Size(52, 17);
             this.labelBlank.TabIndex = 22;
             this.labelBlank.Text = "Бланк:";
             // 
             // FormStorageReplenishment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(277, 121);
+            this.ClientSize = new System.Drawing.Size(369, 149);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.comboBoxName);
             this.Controls.Add(this.buttonCancel);
@@ -122,8 +130,9 @@ namespace LawFirmView
             this.Controls.Add(this.comboBoxBlank);
             this.Controls.Add(this.labelCount);
             this.Controls.Add(this.labelBlank);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormStorageReplenishment";
-            this.Text = "FormStorageReplenishment";
+            this.Text = "Пополенение склада";
             this.ResumeLayout(false);
             this.PerformLayout();
 
