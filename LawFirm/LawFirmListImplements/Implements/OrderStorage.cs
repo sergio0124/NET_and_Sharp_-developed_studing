@@ -122,7 +122,7 @@ namespace LawFirmListImplement.Implements
 
         private OrderViewModel CreateModel(Order order)
         {
-            string documentName = source.Documents.FirstOrDefault(rec => rec.Id == order.DocumentId).DocumentName;
+            string documentName = source.Documents.FirstOrDefault(rec => rec.Id == order.DocumentId)?.DocumentName;
             return new OrderViewModel
             {
                 Id = order.Id,
