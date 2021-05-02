@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LawFirmDatabaseImplement.Migrations
 {
     [DbContext(typeof(LawFirmDatabase))]
-    [Migration("20210328181242_Initialcreate")]
-    partial class Initialcreate
+    [Migration("20210502111143_initialcreate")]
+    partial class initialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -113,6 +113,59 @@ namespace LawFirmDatabaseImplement.Migrations
                     b.ToTable("Orders");
                 });
 
+            modelBuilder.Entity("LawFirmDatabaseImplement.Models.Storage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("StorageManager")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StorageName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Storages");
+                });
+
+            modelBuilder.Entity("LawFirmDatabaseImplement.Models.StorageBlank", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BlankId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DocumentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StorageId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BlankId");
+
+                    b.HasIndex("DocumentId");
+
+                    b.HasIndex("StorageId");
+
+                    b.ToTable("StorageBlanks");
+                });
+
             modelBuilder.Entity("LawFirmDatabaseImplement.Models.DocumentBlank", b =>
                 {
                     b.HasOne("LawFirmDatabaseImplement.Models.Blank", "Blank")
@@ -133,6 +186,25 @@ namespace LawFirmDatabaseImplement.Migrations
                     b.HasOne("LawFirmDatabaseImplement.Models.Document", "Document")
                         .WithMany("Order")
                         .HasForeignKey("DocumentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("LawFirmDatabaseImplement.Models.StorageBlank", b =>
+                {
+                    b.HasOne("LawFirmDatabaseImplement.Models.Blank", "Blank")
+                        .WithMany("StorageBlanks")
+                        .HasForeignKey("BlankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LawFirmDatabaseImplement.Models.Document", "Document")
+                        .WithMany()
+                        .HasForeignKey("DocumentId");
+
+                    b.HasOne("LawFirmDatabaseImplement.Models.Storage", null)
+                        .WithMany("StorageBlanks")
+                        .HasForeignKey("StorageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
