@@ -66,13 +66,8 @@ namespace LawFirmDatabaseImplement.Implements
             using (var context = new LawFirmDatabase())
             {
                 return context.Orders
-<<<<<<< HEAD
-               .Where(rec => rec.Id == model.Id)
-               .Include(rec => rec.Document)
-=======
                .Where(rec => rec.Id==model.Id || rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo)
                .Include(rec=>rec.Document)
->>>>>>> 06f9b15151c4485542b39467ebc4739037b53d41
                .Select(rec => new OrderViewModel
                {
                    Id = rec.Id,

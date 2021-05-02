@@ -52,9 +52,10 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.справочникиToolStripMenuItem, Lab3Extended
-            this.пополнитьСкладыToolStripMenuItem});
-            this.отчётыToolStripMenuItem});
+                this.справочникиToolStripMenuItem,
+                this.пополнитьСкладыToolStripMenuItem,
+                this.отчётыToolStripMenuItem }
+            ) ;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);

@@ -128,6 +128,7 @@ namespace LawFirmView
         private void складыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormStorages>();
+        }
 
         private void списокКомпонентовToolStripMenuItem_Click(object sender, EventArgs e)
         {

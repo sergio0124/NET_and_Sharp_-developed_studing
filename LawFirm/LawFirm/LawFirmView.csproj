@@ -267,6 +267,7 @@
     </Compile>
     <Compile Include="FormStorages.Designer.cs">
       <DependentUpon>FormStorages.cs</DependentUpon>
+	</Compile>
     <Compile Include="FormReportDocumentBlanks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -318,6 +319,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormStorages.resx">
       <DependentUpon>FormStorages.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormReportDocumentBlanks.resx">
       <DependentUpon>FormReportDocumentBlanks.cs</DependentUpon>
     </EmbeddedResource>
