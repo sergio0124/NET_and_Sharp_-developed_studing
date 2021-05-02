@@ -67,6 +67,7 @@ namespace LawFirmDatabaseImplement.Implements
             {
                 return context.Orders
                .Where(rec => rec.Id == model.Id)
+               .Include(rec => rec.Document)
                .Select(rec => new OrderViewModel
                {
                    Id = rec.Id,
