@@ -46,12 +46,12 @@ namespace LawFirmDatabaseImplement.Implements
                 {
                     Id = order.Id,
                     Count = order.Count,
-                    Status=order.Status,
-                    DateCreate=order.DateCreate,
-                    DateImplement=order.DateImplement,
-                    Sum=order.Sum,
-                    DocumentName = order.Document.DocumentName,
-                    DocumentId =order.DocumentId                   
+                    Status = order.Status,
+                    DateCreate = order.DateCreate,
+                    DateImplement = order.DateImplement,
+                    Sum = order.Sum,
+                    DocumentName = order.Document?.DocumentName,
+                    DocumentId = order.DocumentId
                 } :
                null;
             }
@@ -66,18 +66,17 @@ namespace LawFirmDatabaseImplement.Implements
             using (var context = new LawFirmDatabase())
             {
                 return context.Orders
-               .Where(rec => rec.Id==model.Id)
-               .ToList()
+               .Where(rec => rec.Id == model.Id)
                .Select(rec => new OrderViewModel
                {
                    Id = rec.Id,
                    Count = rec.Count,
                    DocumentId = rec.DocumentId,
                    DocumentName = rec.Document.DocumentName,
-                   DateImplement =rec.DateImplement,
-                   DateCreate=rec.DateCreate,
-                   Status=rec.Status,
-                   Sum=rec.Sum
+                   DateImplement = rec.DateImplement,
+                   DateCreate = rec.DateCreate,
+                   Status = rec.Status,
+                   Sum = rec.Sum
                })
                .ToList();
             }
@@ -88,13 +87,12 @@ namespace LawFirmDatabaseImplement.Implements
             using (var context = new LawFirmDatabase())
             {
                 return context.Orders
-               .ToList()
                .Select(rec => new OrderViewModel
                {
                    Id = rec.Id,
                    Count = rec.Count,
                    DocumentId = rec.DocumentId,
-                   DocumentName = context.Documents.FirstOrDefault(recrec => recrec.Id == rec.DocumentId).DocumentName,
+                   DocumentName = rec.Document.DocumentName,
                    DateImplement = rec.DateImplement,
                    DateCreate = rec.DateCreate,
                    Status = rec.Status,
@@ -128,9 +126,7 @@ namespace LawFirmDatabaseImplement.Implements
         private Order CreateModel(OrderBindingModel model, Order order, LawFirmDatabase context)
         {
             order.DocumentId = model.DocumentId;
-            Document document = context.Documents.FirstOrDefault(rec => rec.Id == model.DocumentId);
-            document.Order.Add(order);
-            order.Document = document;
+            Document document = context.Documents.FirstOrDefault(rec => rec.Id == order.DocumentId);
             order.Sum = model.Sum;
             order.Count = model.Count;
             order.Status = model.Status;
