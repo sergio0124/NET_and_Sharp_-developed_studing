@@ -128,6 +128,8 @@ namespace LawFirmView
         private void складыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormStorages>();
+            form.ShowDialog();
+        }
 
         private void списокКомпонентовToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -155,6 +157,35 @@ namespace LawFirmView
         private void списокЗаказовToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormReportOrders>();
+            form.ShowDialog();
+        }
+
+        private void списокСкладовToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new SaveFileDialog { Filter = "docx|*.docx" })
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    _reportLogic.SaveStoragesToWordFile(new ReportBindingModel
+                    {
+                        FileName =
+                   dialog.FileName
+                    });
+                    MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
+                   MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void бланкиПоСкладамToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReportStorageBlanks>();
+            form.ShowDialog();
+        }
+
+        private void сводкаПоЗаказамToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReportOrderByDate>();
             form.ShowDialog();
         }
     }
