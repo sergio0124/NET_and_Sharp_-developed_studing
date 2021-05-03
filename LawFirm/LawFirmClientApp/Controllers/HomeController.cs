@@ -20,8 +20,7 @@ namespace DocumentShopClientApp.Controllers
             {
                 return Redirect("~/Home/Enter");
             }
-            return
-            View(APIClient.GetRequest<List<OrderViewModel>>($"api/main/getorders?clientId={Program.Client.Id}"));
+            return View(APIClient.GetRequest<List<OrderViewModel>>($"api/main/getorders?clientId={Program.Client.Id}"));
         }
         [HttpGet]
         public IActionResult Privacy()
@@ -94,8 +93,7 @@ namespace DocumentShopClientApp.Controllers
             if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password)
             && !string.IsNullOrEmpty(fio))
             {
-                APIClient.PostRequest("api/client/register", new
-                ClientBindingModel
+                APIClient.PostRequest("api/client/register", new ClientBindingModel
                 {
                     ClientFIO = fio,
                     Email = login,
@@ -115,6 +113,32 @@ namespace DocumentShopClientApp.Controllers
         }
         [HttpPost]
         public void Create(int document, int count, decimal sum)
+        {
+            if (count == 0 || sum == 0)
+            {
+                return;
+            }
+            APIClient.PostRequest("api/main/createorder", new CreateOrderBindingModel
+            {
+                DocumentId = document,
+                ClientId = Program.Client.Id,
+                Sum = sum,
+                Count = count
+            });
+            Response.Redirect("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Messages()
+        {
+            if (Program.Client == null)
+            {
+                return Redirect("~/Home/Enter");
+            }
+            return View(APIClient.GetRequest<List<MessageInfoViewModel>>($"api/main/GetMessages?clientId={Program.Client.Id}"));
+        }
+        [HttpPost]
+        public void Messages(int document, int count, decimal sum)
         {
             if (count == 0 || sum == 0)
             {
