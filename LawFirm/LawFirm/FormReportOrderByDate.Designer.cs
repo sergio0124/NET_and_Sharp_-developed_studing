@@ -120,7 +120,6 @@ namespace LawFirmView
             this.Controls.Add(this.dateTimePickerFrom);
             this.Name = "FormReportOrderByDate";
             this.Text = "Заказы по датам";
-            this.Load += new System.EventHandler(this.FormReportOrderByDate_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

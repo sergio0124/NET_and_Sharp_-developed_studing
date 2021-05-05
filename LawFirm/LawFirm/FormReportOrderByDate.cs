@@ -25,11 +25,6 @@ namespace LawFirmView
             this.logic = reportLogic;
         }
 
-        private void FormReportOrderByDate_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonCreateReport_Click(object sender, EventArgs e)
         {
             if (dateTimePickerFrom.Value.Date >= dateTimePickerTo.Value.Date)
