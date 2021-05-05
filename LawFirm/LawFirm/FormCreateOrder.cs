@@ -15,7 +15,7 @@ namespace LawFirmView
         private readonly DocumentLogic _logicD;
         private readonly OrderLogic _logicO;
         private readonly ClientLogic _logicC;
-        public FormCreateOrder(DocumentLogic logicP, OrderLogic logicO, ClientLogic logicC, MailLogic logicM)
+        public FormCreateOrder(DocumentLogic logicP, OrderLogic logicO, ClientLogic logicC)
         {
             InitializeComponent();
             _logicD = logicP;

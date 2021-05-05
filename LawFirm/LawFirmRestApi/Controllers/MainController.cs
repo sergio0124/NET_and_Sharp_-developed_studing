@@ -17,11 +17,11 @@ namespace LawFirmRestApi.Controllers
 
         private readonly MailLogic _mail;
 
-        public MainController(OrderLogic order, DocumentLogic document, MailLogic mailLogic)
+        public MainController(OrderLogic order, DocumentLogic document, MailLogic mail)
         {
             _order = order;
             _document = document;
-            _mail = mailLogic;
+            _mail = mail;
         }
 
         [HttpGet]
