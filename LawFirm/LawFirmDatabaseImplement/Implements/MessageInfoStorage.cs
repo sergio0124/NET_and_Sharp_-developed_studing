@@ -35,11 +35,13 @@ namespace LawFirmDatabaseImplement.Implements
             }
             using (var context = new LawFirmDatabase())
             {
+                string ClientName = context.Clients.FirstOrDefault(rec => rec.Id == model.ClientId)?.Email;
                 return context.MessageInfos
                 .Where(rec => (model.ClientId.HasValue && rec.ClientId ==
                model.ClientId) ||
                 (!model.ClientId.HasValue && rec.DateDelivery.Date ==
-               model.DateDelivery.Date))
+               model.DateDelivery.Date) ||
+                (rec.SenderName==ClientName))
                 .Select(rec => new MessageInfoViewModel
                 {
                     MessageId = rec.MessageId,
@@ -61,10 +63,11 @@ namespace LawFirmDatabaseImplement.Implements
                 {
                     throw new Exception("Уже есть письмо с таким идентификатором");
                 }
+                int? ClientId = context.Clients.FirstOrDefault(rec => rec.Email == model.FromMailAddress)?.Id;
                 context.MessageInfos.Add(new MessageInfo
                 {
                     MessageId = model.MessageId,
-                    ClientId = model.ClientId,
+                    ClientId = ClientId,
                     SenderName = model.FromMailAddress,
                     DateDelivery = model.DateDelivery,
                     Subject = model.Subject,

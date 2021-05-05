@@ -42,6 +42,17 @@ namespace LawFirmBusinessLogic.BusinessLogic
                 DateCreate = DateTime.Now,
                 Status = OrderStatus.Принят
             });
+
+            MailLogic.MailSendAsync(new MailSendInfo
+            {
+                MailAddress = _clientStorage.GetElement(new ClientBindingModel
+                {
+                    Id =
+model.ClientId
+                })?.Email,
+                Subject = $"Создание заказа",
+                Text = $"Заказ на сумму {model.Sum}"
+            });
         }
         public void TakeOrderInWork(ChangeStatusBindingModel model)
         {

@@ -135,23 +135,8 @@ namespace DocumentShopClientApp.Controllers
             {
                 return Redirect("~/Home/Enter");
             }
-            return View(APIClient.GetRequest<List<MessageInfoViewModel>>($"api/main/GetMessages?clientId={Program.Client.Id}"));
-        }
-        [HttpPost]
-        public void Messages(int document, int count, decimal sum)
-        {
-            if (count == 0 || sum == 0)
-            {
-                return;
-            }
-            APIClient.PostRequest("api/main/createorder", new CreateOrderBindingModel
-            {
-                DocumentId = document,
-                ClientId = Program.Client.Id,
-                Sum = sum,
-                Count = count
-            });
-            Response.Redirect("Index");
+            var model = APIClient.GetRequest<List<MessageInfoViewModel>>($"api/main/GetMessages?clientId={Program.Client.Id}");
+            return View(model);
         }
         [HttpPost]
         public decimal Calc(decimal count, int document)

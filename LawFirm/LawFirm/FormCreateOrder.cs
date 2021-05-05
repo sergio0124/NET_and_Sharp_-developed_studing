@@ -1,5 +1,6 @@
 ﻿using LawFirmBusinessLogic.BindingModels;
 using LawFirmBusinessLogic.BusinessLogic;
+using LawFirmBusinessLogic.HelperModels;
 using LawFirmBusinessLogic.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace LawFirmView
         private readonly DocumentLogic _logicD;
         private readonly OrderLogic _logicO;
         private readonly ClientLogic _logicC;
-        public FormCreateOrder(DocumentLogic logicP, OrderLogic logicO, ClientLogic logicC)
+        public FormCreateOrder(DocumentLogic logicP, OrderLogic logicO, ClientLogic logicC, MailLogic logicM)
         {
             InitializeComponent();
             _logicD = logicP;

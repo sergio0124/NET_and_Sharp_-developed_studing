@@ -42,7 +42,7 @@ namespace LawFirmRestApi.Controllers
         }
         private void CheckData(ClientBindingModel model)
         {
-            if (!Regex.IsMatch(model.Email, @"регулярное выражение"))
+            if (!Regex.IsMatch(model.Email, @"^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$"))
             {
                 throw new Exception("В качестве логина почта указана должна быть");
             }
