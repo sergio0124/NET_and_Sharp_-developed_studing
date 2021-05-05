@@ -4,14 +4,16 @@ using LawFirmDatabaseImplement;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LawFirmDatabaseImplement.Migrations
 {
     [DbContext(typeof(LawFirmDatabase))]
-    partial class LawFirmDatabaseModelSnapshot : ModelSnapshot
+    [Migration("20210503104333_messageinfos")]
+    partial class messageinfos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -18,11 +18,13 @@ namespace LawFirmFileImplement.Implements
         private readonly string DocumentFileName = "Document.xml";
         private readonly string ClientFileName = "Client.xml";
         private readonly string ImplementerFileName = "Implementer.xml";
+        private readonly string MessageInfoFileName = "MessageInfo.xml";
         public List<Blank> Blanks { get; set; }
         public List<Order> Orders { get; set; }
         public List<Document> Documents { get; set; }
         public List<Client> Clients { set; get; }
         public List<Implementer> Implementers { set; get; }
+        public List<MessageInfo> MessageInfos { set; get; }
         private FileDataListSingleton()
         {
             Blanks = LoadBlanks();
@@ -30,6 +32,7 @@ namespace LawFirmFileImplement.Implements
             Documents = LoadDocuments();
             Clients = LoadClients();
             Implementers = LoadImplementers();
+            MessageInfos = LoadMessageInfos();
         }
         public static FileDataListSingleton GetInstance()
         {
@@ -46,6 +49,7 @@ namespace LawFirmFileImplement.Implements
             SaveDocuments();
             SaveClients();
             SaveImplementers();
+            SaveMessageInfos();
         }
         private List<Implementer> LoadImplementers()
         {
@@ -176,6 +180,29 @@ namespace LawFirmFileImplement.Implements
             }
             return list;
         }
+        private List<MessageInfo> LoadMessageInfos()
+        {
+            var list = new List<MessageInfo>();
+            if (File.Exists(MessageInfoFileName))
+            {
+                XDocument xDocument = XDocument.Load(MessageInfoFileName);
+                var xElements = xDocument.Root.Elements("MessageInfo").ToList();
+
+                foreach (var elem in xElements)
+                {
+                    list.Add(new MessageInfo
+                    {
+                        MessageId = elem.Attribute("MessageId").Value,
+                        ClientId = Convert.ToInt32(elem.Attribute("ClientId").Value),
+                        DateDelivery = Convert.ToDateTime(elem.Attribute("DateDelivery").Value),
+                        Body = elem.Element("Body").Value,
+                        SenderName = elem.Element("SenderName").Value,
+                        Subject = elem.Element("Subject").Value
+                    });
+                }
+            }
+            return list;
+        }
         private void SaveBlanks()
         {
             if (Blanks != null)
@@ -272,6 +299,27 @@ namespace LawFirmFileImplement.Implements
                 }
                 XDocument xDocument = new XDocument(xElement);
                 xDocument.Save(ClientFileName);
+            }
+        }
+        private void SaveMessageInfos()
+        {
+            if (MessageInfos != null)
+            {
+                var xElement = new XElement("MessageInfos");
+                foreach (var messageinfo in MessageInfos)
+                {
+                    xElement.Add(new XElement("MessageInfo",
+                    new XAttribute("MessageId", messageinfo.MessageId),
+                    new XElement("SenderName", messageinfo.SenderName),
+                    new XElement("DateDelivery", messageinfo.DateDelivery),
+                    new XElement("Body", messageinfo.Body),
+                    new XElement("Subject", messageinfo.Subject),
+                    new XElement("ClientId", messageinfo.ClientId)
+                    ));
+                }
+
+                XDocument xDocument = new XDocument(xElement);
+                xDocument.Save(MessageInfoFileName);
             }
         }
     }

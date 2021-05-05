@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LawFirmFileImplement", "Law
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LawFirmDatabaseImplement", "LawFirmDatabaseImplement\LawFirmDatabaseImplement.csproj", "{46F92C26-A6EA-4643-A90F-A5184F7570DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LawFirmClientApp", "LawFirmClientApp\LawFirmClientApp.csproj", "{458BE0BB-6D0A-41DA-8953-BE645658F916}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LawFirmClientApp", "LawFirmClientApp\LawFirmClientApp.csproj", "{458BE0BB-6D0A-41DA-8953-BE645658F916}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LawFirmRestApi", "LawFirmRestApi\LawFirmRestApi.csproj", "{FF03155A-D42E-4337-B536-0FA4CC89C69A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LawFirmRestApi", "LawFirmRestApi\LawFirmRestApi.csproj", "{FF03155A-D42E-4337-B536-0FA4CC89C69A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
