@@ -70,7 +70,7 @@ order.DocumentName, order.Count.ToString(), order.Sum.ToString(), order.Status.T
             style.Font.Bold = true;
         }
 
-        internal static void CreateDocOrderReportByDate(PdfInfoOrderReportByDate info)
+        public static void CreateDocOrderReportByDate(PdfInfoOrderReportByDate info)
         {
             Document document = new Document();
             DefineStyles(document);

@@ -110,7 +110,7 @@ namespace LawFirmBusinessLogic.BusinessLogic
             }
         }
 
-        internal static void CreateStoragesDoc(StorageExcelInfo info)
+        public static void CreateStoragesDoc(StorageExcelInfo info)
         {
             using (SpreadsheetDocument spreadsheetDocument = SpreadsheetDocument.Create(info.FileName, SpreadsheetDocumentType.Workbook))
             {
