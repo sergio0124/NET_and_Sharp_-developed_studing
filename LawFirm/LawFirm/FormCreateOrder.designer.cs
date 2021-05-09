@@ -86,12 +86,13 @@
             // 
             this.textBoxSum.Location = new System.Drawing.Point(113, 82);
             this.textBoxSum.Name = "textBoxSum";
+            this.textBoxSum.ReadOnly = true;
             this.textBoxSum.Size = new System.Drawing.Size(184, 22);
             this.textBoxSum.TabIndex = 5;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(174, 110);
+            this.buttonCancel.Location = new System.Drawing.Point(179, 110);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(96, 23);
             this.buttonCancel.TabIndex = 6;
@@ -101,7 +102,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(68, 110);
+            this.buttonSave.Location = new System.Drawing.Point(73, 110);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(100, 23);
             this.buttonSave.TabIndex = 7;
@@ -113,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(310, 140);
+            this.ClientSize = new System.Drawing.Size(310, 138);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.textBoxSum);

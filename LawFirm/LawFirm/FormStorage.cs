@@ -109,8 +109,9 @@ namespace LawFirmView
                     Id = id,
                     StorageName = textBoxName.Text,
                     StorageManager = textBoxManager.Text,
-                    StorageBlanks = storageBlanks
-                });
+                    StorageBlanks = storageBlanks,
+                    DateCreate = DateTime.Now
+                }) ;
 
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
