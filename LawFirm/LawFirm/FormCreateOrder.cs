@@ -46,13 +46,13 @@ namespace LawFirmView
                 try
                 {
                     int id = Convert.ToInt32(comboBoxDocument.SelectedValue);
-                    DocumentViewModel document = _logicD.Read(new DocumentBindingModel
+                    DocumentViewModel product = _logicD.Read(new DocumentBindingModel
                     {
                         Id
                     = id
                     })?[0];
                     int count = Convert.ToInt32(textBoxCount.Text);
-                    textBoxSum.Text = (count * document?.Price ?? 0).ToString();
+                    textBoxSum.Text = (count * product?.Price ?? 0).ToString();
                 }
                 catch (Exception ex)
                 {
@@ -65,7 +65,7 @@ namespace LawFirmView
         {
             CalcSum();
         }
-        private void ComboBoxDocument_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
             CalcSum();
         }

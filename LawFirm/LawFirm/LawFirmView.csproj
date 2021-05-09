@@ -250,6 +250,18 @@
     <Compile Include="FormMain.designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReportOrderByDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportOrderByDate.Designer.cs">
+      <DependentUpon>FormReportOrderByDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReportStorageBlanks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportStorageBlanks.Designer.cs">
+      <DependentUpon>FormReportStorageBlanks.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormStorage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -267,6 +279,18 @@
     </Compile>
     <Compile Include="FormStorages.Designer.cs">
       <DependentUpon>FormStorages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReportDocumentBlanks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportDocumentBlanks.Designer.cs">
+      <DependentUpon>FormReportDocumentBlanks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReportOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportOrders.Designer.cs">
+      <DependentUpon>FormReportOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -299,6 +323,12 @@
       <DependentUpon>FormMain.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormReportOrderByDate.resx">
+      <DependentUpon>FormReportOrderByDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReportStorageBlanks.resx">
+      <DependentUpon>FormReportStorageBlanks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormStorage.resx">
       <DependentUpon>FormStorage.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,6 +337,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormStorages.resx">
       <DependentUpon>FormStorages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReportDocumentBlanks.resx">
+      <DependentUpon>FormReportDocumentBlanks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReportOrders.resx">
+      <DependentUpon>FormReportOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -317,7 +353,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report.rdlc" />
+    <EmbeddedResource Include="ReportByDate.rdlc" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\LawFirmBusinessLogic.ViewModels.OrderByDateViewModel.datasource" />
     <None Include="Properties\DataSources\LawFirmBusinessLogic.ViewModels.ReportOrdersViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
