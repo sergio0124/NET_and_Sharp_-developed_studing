@@ -38,7 +38,7 @@ namespace LawFirmListImplement.Implements
             List<OrderViewModel> result = new List<OrderViewModel>();
             foreach (var order in source.Orders)
             {
-                if (order.DocumentId==model.DocumentId)
+                if (order.Id==model.Id || order.DateCreate >= model.DateFrom && order.DateCreate <= model.DateTo)
                 {
                     result.Add(CreateModel(order));
                 }
