@@ -64,11 +64,11 @@ public void Insert(DocumentBindingModel model)
                 DocumentBlanks = new
             Dictionary<int, int>()
             };
-            foreach (var product in source.Documents)
+            foreach (var document in source.Documents)
             {
-                if (product.Id >= tempDocument.Id)
+                if (document.Id >= tempDocument.Id)
                 {
-                    tempDocument.Id = product.Id + 1;
+                    tempDocument.Id = document.Id + 1;
                 }
             }
             source.Documents.Add(CreateModel(model, tempDocument));
