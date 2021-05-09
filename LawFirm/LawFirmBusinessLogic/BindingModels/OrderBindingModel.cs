@@ -14,7 +14,5 @@ namespace LawFirmBusinessLogic.BindingModels
         public OrderStatus Status { get; set; }
         public DateTime DateCreate { get; set; }
         public DateTime? DateImplement { get; set; }
-        public DateTime? DateFrom { get; set; }
-        public DateTime? DateTo { get; set; }
     }
 }
