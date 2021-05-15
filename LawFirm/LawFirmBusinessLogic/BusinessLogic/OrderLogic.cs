@@ -4,7 +4,6 @@ using LawFirmBusinessLogic.BindingModels;
 using LawFirmBusinessLogic.Enums;
 using LawFirmBusinessLogic.Interfaces;
 using LawFirmBusinessLogic.ViewModels;
-using System.Text;
 
 namespace LawFirmBusinessLogic.BusinessLogic
 {
@@ -12,8 +11,12 @@ namespace LawFirmBusinessLogic.BusinessLogic
     {
         private readonly object locker = new object();
         private readonly IOrderStorage _orderStorage;
-        public OrderLogic(IOrderStorage orderStorage)
+        private readonly IStorageStorage _storageStorage;
+        private readonly IDocumentStorage _documentStorage;
+        public OrderLogic(IOrderStorage orderStorage, IDocumentStorage documentStorage, IStorageStorage storageStorage)
         {
+            _storageStorage = storageStorage;
+            _documentStorage = documentStorage;
             _orderStorage = orderStorage;
         }
         public List<OrderViewModel> Read(OrderBindingModel model)
@@ -26,6 +29,7 @@ namespace LawFirmBusinessLogic.BusinessLogic
             {
                 return new List<OrderViewModel> { _orderStorage.GetElement(model) };
             }
+
             return _orderStorage.GetFilteredList(model);
         }
         public void CreateOrder(CreateOrderBindingModel model)
@@ -74,6 +78,23 @@ namespace LawFirmBusinessLogic.BusinessLogic
                     Status = OrderStatus.Выполняется
                 });
             }
+            var document = _documentStorage.GetElement(new DocumentBindingModel
+            {
+                Id = order.DocumentId
+            });
+
+            _storageStorage.CheckBlanks(document, order.Count);
+            _orderStorage.Update(new OrderBindingModel
+            {
+                ClientId=order.ClientId,
+                Id = order.Id,
+                Sum = order.Sum,
+                DocumentId = order.DocumentId,
+                Count = order.Count,
+                DateCreate = order.DateCreate,
+                DateImplement = DateTime.Now,
+                Status = OrderStatus.Выполняется
+            });
         }
         public void FinishOrder(ChangeStatusBindingModel model)
         {

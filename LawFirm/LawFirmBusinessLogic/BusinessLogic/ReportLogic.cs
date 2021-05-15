@@ -14,12 +14,14 @@ namespace LawFirmBusinessLogic.BusinessLogic
         private readonly IBlankStorage _blankStorage;
         private readonly IDocumentStorage _documentStorage;
         private readonly IOrderStorage _orderStorage;
+        private readonly IStorageStorage _storageStorage;
         public ReportLogic(IDocumentStorage documentStorage, IBlankStorage
-       blankStorage, IOrderStorage orderStorage)
+       blankStorage, IOrderStorage orderStorage, IStorageStorage storageStorage)
         {
             _documentStorage = documentStorage;
             _blankStorage = blankStorage;
             _orderStorage = orderStorage;
+            _storageStorage = storageStorage;
         }
         /// <summary>
         /// Получение списка компонент с указанием, в каких изделиях используются
@@ -52,6 +54,40 @@ namespace LawFirmBusinessLogic.BusinessLogic
             }
             return list;
         }
+
+        public List<OrderReportByDateViewModel> GetOrderReportByDate()
+        {
+            return _orderStorage.GetFullList()
+               .GroupBy(order => order.DateCreate.ToShortDateString())
+               .Select(rec => new OrderReportByDateViewModel
+               {
+                   Date = Convert.ToDateTime(rec.Key),
+                   Count = rec.Count(),
+                   Sum = rec.Sum(order => order.Sum)
+               })
+               .ToList();
+        }
+
+        public void SaveOrderReportByDateToPdfFile(ReportBindingModel model)
+        {
+            SaveToPdf.CreateDocOrderReportByDate(new PdfInfoOrderReportByDate
+            {
+                FileName = model.FileName,
+                Title = "Список заказов",
+                Orders = GetOrderReportByDate()
+            });
+        }
+
+        public void SaveStorageBlanksToExcelFile(ReportBindingModel model)
+        {
+            SaveToExcel.CreateStoragesDoc(new StorageExcelInfo
+            {
+                FileName = model.FileName,
+                Title = "Список загруженности складов",
+                StorageBlanks = GetStorageBlanks()
+            });
+        }
+
         /// <summary>
         /// Получение списка заказов за определенный период
         /// </summary>
@@ -119,5 +155,36 @@ namespace LawFirmBusinessLogic.BusinessLogic
             });
         }
 
+        public void SaveStoragesToWordFile(ReportBindingModel model)
+        {
+            SaveToWord.CreateStoragesDoc(new StorageWordInfo
+            {
+                FileName = model.FileName,
+                Title = "Список складов",
+                Storages = _storageStorage.GetFullList()
+            });
+        }
+
+        public List<ReportStorageBlanksViewModel> GetStorageBlanks()
+        {
+            var storages = _storageStorage.GetFullList();
+            var list = new List<ReportStorageBlanksViewModel>();
+            foreach (var storage in storages)
+            {
+                var record = new ReportStorageBlanksViewModel
+                {
+                    StorageName = storage.StorageName,
+                    Blanks = new List<Tuple<string, int>>(),
+                    TotalCount = 0
+                };
+                foreach (var blank in storage.StorageBlanks)
+                {
+                    record.Blanks.Add(new Tuple<string, int>(blank.Value.Item1, blank.Value.Item2));
+                    record.TotalCount += blank.Value.Item2;
+                }
+                list.Add(record);
+            }
+            return list;
+        }
     }
 }
