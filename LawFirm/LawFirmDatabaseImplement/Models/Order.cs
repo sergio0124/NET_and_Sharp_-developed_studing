@@ -9,7 +9,11 @@ namespace LawFirmDatabaseImplement.Models
     {
         public int Id { set; get; }
         [Required]
+        [ForeignKey("Document")]
         public int DocumentId { set; get; }
+        [Required]
+        [ForeignKey("Client")]
+        public int ClientId { set; get; }
         [Required]
         public int Count { set; get; }
         [Required]
@@ -19,6 +23,7 @@ namespace LawFirmDatabaseImplement.Models
         [Required]
         public DateTime DateCreate { set; get; }
         public DateTime? DateImplement { get; set; }
-        public  Document Document { set; get; }
+        public Document Document { set; get; }
+        public Client Client { set; get; }
     }
 }

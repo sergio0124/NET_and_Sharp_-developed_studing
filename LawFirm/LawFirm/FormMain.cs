@@ -31,6 +31,7 @@ namespace LawFirmView
                     dataGridView.DataSource = list;
                     dataGridView.Columns[0].Visible = false;
                     dataGridView.Columns[1].Visible = false;
+                    dataGridView.Columns[2].Visible = false;
                 }
             }
             catch (Exception ex)
@@ -160,6 +161,7 @@ namespace LawFirmView
             form.ShowDialog();
         }
 
+
         private void списокСкладовToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             using (var dialog = new SaveFileDialog { Filter = "docx|*.docx" })
@@ -186,6 +188,11 @@ namespace LawFirmView
         private void сводкаПоЗаказамToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormReportOrderByDate>();
+
+        private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormClients>();
+
             form.ShowDialog();
         }
     }

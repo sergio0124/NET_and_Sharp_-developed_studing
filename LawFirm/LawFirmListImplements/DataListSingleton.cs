@@ -9,11 +9,13 @@ namespace LawFirmListImplement
         public List<Order> Orders { get; set; }
         public List<Document> Documents { get; set; }
         public List<Storage> Storages { get; set; }
+        public List<Client> Clients { set; get; }
         private DataListSingleton()
         {
             Blanks = new List<Blank>();
             Orders = new List<Order>();
             Documents = new List<Document>();
+            Clients = new List<Client>();
         }
         public static DataListSingleton GetInstance()
         {
