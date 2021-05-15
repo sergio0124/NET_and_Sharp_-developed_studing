@@ -50,10 +50,12 @@ namespace LawFirmDatabaseImplement.Implements
                     ClientFIO = order.Client?.ClientFIO,
                     ClientId = order.ClientId,
                     Count = order.Count,
-                    Sum = order.Sum,
                     Status = order.Status,
                     DateCreate = order.DateCreate,
-                    DateImplement = order.DateImplement
+                    DateImplement = order.DateImplement,
+                    Sum = order.Sum,
+                    DocumentName = order.Document?.DocumentName,
+                    DocumentId = order.DocumentId
                 } :
                null;
             }

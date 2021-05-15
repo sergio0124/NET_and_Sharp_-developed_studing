@@ -8,6 +8,7 @@ namespace LawFirmListImplement
         public List<Blank> Blanks { get; set; }
         public List<Order> Orders { get; set; }
         public List<Document> Documents { get; set; }
+        public List<Storage> Storages { get; set; }
         public List<Client> Clients { set; get; }
         private DataListSingleton()
         {
