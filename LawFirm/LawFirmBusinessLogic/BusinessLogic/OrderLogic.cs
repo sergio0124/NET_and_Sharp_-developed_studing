@@ -48,6 +48,7 @@ namespace LawFirmBusinessLogic.BusinessLogic
         {
             lock (locker)
             {
+                OrderStatus status = OrderStatus.Выполняется;
                 var order = _orderStorage.GetElement(new OrderBindingModel
                 {
                     Id = model.OrderId
@@ -56,15 +57,19 @@ namespace LawFirmBusinessLogic.BusinessLogic
                 {
                     throw new Exception("Не найден заказ");
                 }
-                if (order.Status != OrderStatus.Принят)
+                if (order.Status != OrderStatus.Принят && order.Status!=OrderStatus.Требуются_бланки)
                 {
-                    throw new Exception("Заказ не в статусе \"Принят\"");
+                    throw new Exception("Заказ не в статусе \"Принят\" или \"Требуются_бланки\"");
                 }
-                if (order.ImplementerId.HasValue)
+                if (order.ImplementerId.HasValue && order.Status != OrderStatus.Требуются_бланки)
                 {
                     throw new Exception("У заказа уже есть исполнитель");
                 }
 
+                if (!_storageStorage.CheckBlanks(_documentStorage.GetElement(new DocumentBindingModel { Id = order.DocumentId }), order.Count))
+                {
+                    status = OrderStatus.Требуются_бланки;
+                }
                 _orderStorage.Update(new OrderBindingModel
                 {
                     Id = order.Id,
@@ -75,26 +80,9 @@ namespace LawFirmBusinessLogic.BusinessLogic
                     Sum = order.Sum,
                     DateCreate = order.DateCreate,
                     DateImplement = DateTime.Now,
-                    Status = OrderStatus.Выполняется
+                    Status = status
                 });
             }
-            var document = _documentStorage.GetElement(new DocumentBindingModel
-            {
-                Id = order.DocumentId
-            });
-
-            _storageStorage.CheckBlanks(document, order.Count);
-            _orderStorage.Update(new OrderBindingModel
-            {
-                ClientId=order.ClientId,
-                Id = order.Id,
-                Sum = order.Sum,
-                DocumentId = order.DocumentId,
-                Count = order.Count,
-                DateCreate = order.DateCreate,
-                DateImplement = DateTime.Now,
-                Status = OrderStatus.Выполняется
-            });
         }
         public void FinishOrder(ChangeStatusBindingModel model)
         {
@@ -106,6 +94,10 @@ namespace LawFirmBusinessLogic.BusinessLogic
             if (order == null)
             {
                 throw new Exception("Не найден заказ");
+            }
+            if (order.Status == OrderStatus.Требуются_бланки && _storageStorage.CheckBlanks(_documentStorage.GetElement(new DocumentBindingModel { Id = order.DocumentId }), order.Count))
+            {
+                order.Status = OrderStatus.Выполняется;
             }
             if (order.Status != OrderStatus.Выполняется)
             {

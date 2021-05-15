@@ -14,6 +14,6 @@ namespace LawFirmBusinessLogic.Interfaces
         void Insert(StorageBindingModel model);
         void Update(StorageBindingModel model);
         void Delete(StorageBindingModel model);
-        void CheckBlanks(DocumentViewModel model, int BlankCountInOrder);
+        bool CheckBlanks(DocumentViewModel model, int BlankCountInOrder);
     }
 }
