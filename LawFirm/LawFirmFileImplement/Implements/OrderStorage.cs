@@ -1,4 +1,5 @@
 ﻿using LawFirmBusinessLogic.BindingModels;
+using LawFirmBusinessLogic.Enums;
 using LawFirmBusinessLogic.Interfaces;
 using LawFirmBusinessLogic.ViewModels;
 using LawFirmFileImplement.Models;
@@ -37,15 +38,16 @@ namespace LawFirmFileImplement.Implements
 			{
 				return null;
 			}
-			List<OrderViewModel> result = new List<OrderViewModel>();
-			foreach (var order in source.Orders)
-			{
-				if (order.Id==model.Id || order.DateCreate >= model.DateFrom && order.DateCreate <= model.DateTo)
-				{
-					result.Add(CreateModel(order));
-				}
-			}
-			return result;
+			return source.Orders
+			.Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue &&
+		   rec.DateCreate.Date == model.DateCreate.Date) ||
+			(model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate.Date
+		   >= model.DateFrom.Value.Date && rec.DateCreate.Date <= model.DateTo.Value.Date) ||
+			(model.ClientId.HasValue && rec.ClientId == model.ClientId)
+			 || (model.Status == rec.Status && rec.Status == OrderStatus.Выполняется && model.ImplementerId.HasValue && rec.ImplementerId == rec.ImplementerId)
+					|| (model.Status == rec.Status && rec.Status == OrderStatus.Принят))
+			.Select(CreateModel)
+			.ToList();
 		}
 
 
@@ -120,9 +122,10 @@ namespace LawFirmFileImplement.Implements
 		{
 			order.DocumentId = model.DocumentId;
 			order.ClientId = model.ClientId;
+			order.ImplementerId = model.ImplementerId;
 			order.Sum = model.Sum;
 			order.Count = model.Count;
-			order.Status = model.Status;
+			order.Status = (OrderStatus)model.Status;
 			order.DateCreate = model.DateCreate;
 			order.DateImplement = model.DateImplement;
 			return order;
@@ -131,17 +134,18 @@ namespace LawFirmFileImplement.Implements
 
 		private OrderViewModel CreateModel(Order order)
 		{
-			string documentName = source.Documents.FirstOrDefault(rec => rec.Id == order.DocumentId)?.DocumentName;
+			string FIO = order.ImplementerId.HasValue ? source.Implementers.FirstOrDefault(rec => rec.Id == order.ImplementerId)?.ImplementerFIO : string.Empty;
 			return new OrderViewModel
 			{
 				Id = order.Id,
-				DocumentId = order.DocumentId,
 				ClientId = (int)order.ClientId,
-				Sum = order.Sum,
+				DocumentId = order.DocumentId,
+				ImplementerId = (int)order.ImplementerId,
+				ImplementerFIO = FIO,
 				Count = order.Count,
+				Sum = order.Sum,
 				Status = order.Status,
 				DateCreate = order.DateCreate,
-				DocumentName=documentName,
 				DateImplement = order.DateImplement
 			};
 		}

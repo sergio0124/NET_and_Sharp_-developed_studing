@@ -1,4 +1,5 @@
 ﻿using LawFirmBusinessLogic.BindingModels;
+using LawFirmBusinessLogic.Enums;
 using LawFirmBusinessLogic.Interfaces;
 using LawFirmBusinessLogic.ViewModels;
 using LawFirmDatabaseImplement.Models;
@@ -30,35 +31,36 @@ namespace LawFirmDatabaseImplement.Implements
             }
         }
 
-        public OrderViewModel GetElement(OrderBindingModel model)
+        public List<OrderViewModel> GetFullList()
         {
-            if (model == null)
-            {
-                return null;
-            }
             using (var context = new LawFirmDatabase())
             {
-                var order = context.Orders
-               .FirstOrDefault(rec => rec.Id
-               == model.Id || rec.ClientId==model.ClientId);
-                return order != null ?
-                new OrderViewModel
-                {
-                    Id = order.Id,
-                    DocumentName = order.Document?.DocumentName,
-                    DocumentId = order.DocumentId,
-                    ClientFIO = order.Client?.ClientFIO,
-                    ClientId = order.ClientId,
-                    Count = order.Count,
-                    Status = order.Status,
-                    DateCreate = order.DateCreate,
-                    DateImplement = order.DateImplement,
-                    Sum = order.Sum
-                } :
-               null;
+                return context.Orders
+                    .Include(rec => rec.Document)
+                    .Include(rec => rec.Client)
+                    .Include(rec => rec.Implementer)
+                    .Select(CreateModel).ToList();
             }
         }
-
+        private OrderViewModel CreateModel(Order order)
+        {
+            return new OrderViewModel
+            {
+                Id = order.Id,
+                DocumentId = order.DocumentId,
+                ClientId = order.ClientId,
+                ImplementerId = order.ImplementerId,
+                ClientFIO = order.Client.ClientFIO,
+                DocumentName = order.Document.DocumentName,
+                Count = order.Count,
+                Sum = order.Sum,
+                Status = order.Status,
+                DateCreate = order.DateCreate,
+                DateImplement = order?.DateImplement,
+                ImplementerFIO = order.ImplementerId.HasValue ?
+                    order.Implementer.ImplementerFIO : string.Empty
+            };
+        }
         public List<OrderViewModel> GetFilteredList(OrderBindingModel model)
         {
             if (model == null)
@@ -68,44 +70,41 @@ namespace LawFirmDatabaseImplement.Implements
             using (var context = new LawFirmDatabase())
             {
                 return context.Orders
-               .Where(rec => rec.Id==model.Id || rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo || rec.ClientId == model.ClientId)
-               .Include(rec=>rec.Document)
-               .Select(rec => new OrderViewModel
-               {
-                   Id = rec.Id,
-                   DocumentName = rec.Document.DocumentName,
-                   DocumentId = rec.DocumentId,
-                   ClientFIO = rec.Client.ClientFIO,
-                   ClientId = rec.ClientId,
-                   Count = rec.Count,
-                   Sum = rec.Sum,
-                   Status = rec.Status,
-                   DateCreate = rec.DateCreate,
-                   DateImplement = rec.DateImplement
-               })
-               .ToList();
+                    .Include(rec => rec.Document)
+                    .Include(rec => rec.Client)
+                    .Include(rec => rec.Implementer)
+                    .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue &&
+                    rec.DateCreate.Date == model.DateCreate.Date) ||
+                     (model.DateFrom.HasValue && model.DateTo.HasValue &&
+                    rec.DateCreate.Date >= model.DateFrom.Value.Date && rec.DateCreate.Date <=
+                    model.DateTo.Value.Date) ||
+                     (model.ClientId.HasValue && rec.ClientId == model.ClientId) ||
+                    (model.FreeOrders.HasValue && model.FreeOrders.Value==true && rec.Status ==
+                    OrderStatus.Принят) ||
+                     (model.ImplementerId.HasValue && rec.ImplementerId ==
+                    model.ImplementerId && rec.Status == OrderStatus.Выполняется))
+                    .Select(CreateModel).ToList();
             }
         }
 
-        public List<OrderViewModel> GetFullList()
+        public OrderViewModel GetElement(OrderBindingModel model)
         {
+            if (model == null)
+            {
+                return null;
+            }
+
             using (var context = new LawFirmDatabase())
             {
-                return context.Orders
-               .Select(rec => new OrderViewModel
-               {
-                   Id = rec.Id,
-                   DocumentName = rec.Document.DocumentName,
-                   DocumentId = rec.DocumentId,
-                   ClientFIO = rec.Client.ClientFIO,
-                   Count = rec.Count,
-                   Sum = rec.Sum,
-                   Status = rec.Status,
-                   DateCreate = rec.DateCreate,
-                   DateImplement = rec.DateImplement,
-                   ClientId = rec.ClientId,
-               })
-               .ToList();
+                var order = context.Orders
+                    .Include(rec => rec.Document)
+                    .Include(rec => rec.Client)
+                    .Include(rec => rec.Implementer)
+                    .FirstOrDefault(rec => rec.Id == model.Id);
+
+                return order != null ?
+                    CreateModel(order) :
+                    null;
             }
         }
 
@@ -134,6 +133,7 @@ namespace LawFirmDatabaseImplement.Implements
         {
             order.DocumentId = model.DocumentId;
             order.ClientId = (int)model.ClientId;
+            order.ImplementerId = model.ImplementerId;
             order.Sum = model.Sum;
             order.Count = model.Count;
             order.Status = model.Status;
