@@ -53,9 +53,7 @@ namespace LawFirmDatabaseImplement.Implements
                     Status = order.Status,
                     DateCreate = order.DateCreate,
                     DateImplement = order.DateImplement,
-                    Sum = order.Sum,
-                    DocumentName = order.Document?.DocumentName,
-                    DocumentId = order.DocumentId
+                    Sum = order.Sum
                 } :
                null;
             }
