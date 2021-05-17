@@ -99,7 +99,7 @@ namespace LawFirmBusinessLogic.BusinessLogic
             {
                 order.Status = OrderStatus.Выполняется;
             }
-            if (order.Status != OrderStatus.Выполняется)
+            else if (order.Status != OrderStatus.Выполняется)
             {
                 throw new Exception("Заказ не в статусе \"Выполняется\"");
             }

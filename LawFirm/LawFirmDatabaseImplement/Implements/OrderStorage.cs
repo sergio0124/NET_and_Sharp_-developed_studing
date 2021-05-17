@@ -35,6 +35,13 @@ namespace LawFirmDatabaseImplement.Implements
         {
             using (var context = new LawFirmDatabase())
             {
+                //List<Order> Ord = context.Orders
+                //    .ToList();
+                //foreach (var ord in Ord)
+                //{
+                //    context.Remove(ord);
+                //}
+                //context.SaveChanges();
                 return context.Orders
                     .Include(rec => rec.Document)
                     .Include(rec => rec.Client)
@@ -79,7 +86,7 @@ namespace LawFirmDatabaseImplement.Implements
                     rec.DateCreate.Date >= model.DateFrom.Value.Date && rec.DateCreate.Date <=
                     model.DateTo.Value.Date) ||
                      (model.ClientId.HasValue && rec.ClientId == model.ClientId) ||
-                    (model.FreeOrders.HasValue && model.FreeOrders.Value==true && (rec.Status ==
+                    (model.FreeOrders.HasValue && model.FreeOrders.Value == true && (rec.Status ==
                     OrderStatus.Принят || rec.Status ==
                     OrderStatus.Требуются_бланки)) ||
                      (model.ImplementerId.HasValue && rec.ImplementerId ==
