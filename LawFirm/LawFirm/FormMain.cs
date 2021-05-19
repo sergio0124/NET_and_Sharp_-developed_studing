@@ -188,6 +188,8 @@ namespace LawFirmView
         private void сводкаПоЗаказамToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormReportOrderByDate>();
+            form.ShowDialog();
+        }
 
         private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
         {

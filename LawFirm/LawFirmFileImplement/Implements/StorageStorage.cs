@@ -174,7 +174,7 @@ namespace LawFirmFileImplement.Implements
             return true;
         }
 
-        public void CheckBlanks(DocumentViewModel model, int materialCountInOrder)
+        public void CheckBlanks(DocumentViewModel model, int BlankCountInOrder)
         {
             throw new NotImplementedException();
         }

@@ -29,18 +29,18 @@ namespace LawFirmView
         {
             try
             {
-                var materials = logic.GetStorageBlanks();
-                if (materials != null)
+                var blanks = logic.GetStorageBlanks();
+                if (blanks != null)
                 {
                     dataGridView.Rows.Clear();
-                    foreach (var material in materials)
+                    foreach (var blank in blanks)
                     {
-                        dataGridView.Rows.Add(new object[] { material.StorageName, "", "" });
-                        foreach (var listElem in material.Blanks)
+                        dataGridView.Rows.Add(new object[] { blank.StorageName, "", "" });
+                        foreach (var listElem in blank.Blanks)
                         {
                             dataGridView.Rows.Add(new object[] { "", listElem.Item1, listElem.Item2 });
                         }
-                        dataGridView.Rows.Add(new object[] { "Итого", "", material.TotalCount });
+                        dataGridView.Rows.Add(new object[] { "Итого", "", blank.TotalCount });
                         dataGridView.Rows.Add(new object[] { });
                     }
                 }

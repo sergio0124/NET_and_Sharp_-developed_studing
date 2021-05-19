@@ -75,17 +75,7 @@ namespace LawFirmDatabaseImplement.Implements
                     .ThenInclude(rec => rec.Blank)
                     .FirstOrDefault(rec => rec.StorageName == model.StorageName || rec.Id == model.Id);
 
-                return storehouse != null ?
-                    new StorageViewModel
-                    {
-                        Id = storehouse.Id,
-                        StorageName = storehouse.StorageName,
-                        StorageManager = storehouse.StorageManager,
-                        DateCreate = storehouse.DateCreate,
-                        StorageBlanks = storehouse.StorageBlanks
-                            .ToDictionary(recPC => recPC.BlankId, recPC => (recPC.Blank?.BlankName, recPC.Count))
-                    } :
-                    null;
+                return storehouse==null ? null : CreateModel(storehouse);             
             }
         }
 
@@ -154,6 +144,19 @@ namespace LawFirmDatabaseImplement.Implements
                     throw new Exception("Элемент не найден");
                 }
             }
+        }
+
+        private StorageViewModel CreateModel(Storage storage)
+        {
+            return new StorageViewModel
+            {
+                Id = storage.Id,
+                StorageName = storage.StorageName,
+                StorageManager = storage.StorageManager,
+                DateCreate = storage.DateCreate,
+                StorageBlanks = storage.StorageBlanks
+                            .ToDictionary(recPC => recPC.BlankId, recPC => (recPC.Blank?.BlankName, recPC.Count))
+            };
         }
 
         private Storage CreateModel(StorageBindingModel model, Storage storage, LawFirmDatabase context)

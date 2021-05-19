@@ -42,7 +42,7 @@ namespace LawFirmView
             currentContainer.RegisterType<StorageLogic>(new
            HierarchicalLifetimeManager());
             currentContainer.RegisterType<ReportLogic>(new
-                HierarchicalLifetimeManager());
+           HierarchicalLifetimeManager());
             return currentContainer;
         }
 

@@ -23,8 +23,6 @@ namespace LawFirmFileImplement.Implements
         public List<Document> Documents { get; set; }
         public List<Storage> Storages { get; set; }
         public List<Client> Clients { set; get; }
-        public object Blank { get; internal set; }
-
         private FileDataListSingleton()
         {
             Blanks = LoadBlanks();
@@ -61,9 +59,9 @@ namespace LawFirmFileImplement.Implements
                 {
                     var storageBlanks = new Dictionary<int, int>();
 
-                    foreach (var material in storage.Element("StorageBlanks").Elements("StorageBlank").ToList())
+                    foreach (var blank in storage.Element("StorageBlanks").Elements("StorageBlank").ToList())
                     {
-                        storageBlanks.Add(Convert.ToInt32(material.Element("Key").Value), Convert.ToInt32(material.Element("Value").Value));
+                        storageBlanks.Add(Convert.ToInt32(blank.Element("Key").Value), Convert.ToInt32(blank.Element("Value").Value));
                     }
 
                     list.Add(new Storage
@@ -132,8 +130,8 @@ namespace LawFirmFileImplement.Implements
                         Count = Convert.ToInt32(elem.Element("Count").Value),
                         DateCreate = Convert.ToDateTime(elem.Element("DateCreate").Value),
                         Status = status
-                    });
-              if (!string.IsNullOrEmpty(elem.Element("DateImplement").Value))
+                    };
+                    if (!string.IsNullOrEmpty(elem.Element("DateImplement").Value))
                     {
                         order.DateImplement = Convert.ToDateTime(elem.Element("DateImplement").Value);
                     }
@@ -275,7 +273,7 @@ namespace LawFirmFileImplement.Implements
                 XDocument xDocument = new XDocument(xElement);
                 xDocument.Save(StorageFileName);
             }
-}
+        }
         private void SaveClients()
         {
             if (Clients != null)
