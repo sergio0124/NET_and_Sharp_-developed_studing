@@ -26,19 +26,7 @@ namespace LawFirmView
             {
                 try
                 {
-
-                    DocumentViewModel view = logic.Read(new DocumentBindingModel
-                    {
-                        Id =
-    id.Value
-                    })?[0];
-                    if (view != null)
-                    {
-                        textBoxName.Text = view.DocumentName;
-                        textBoxPrice.Text = view.Price.ToString();
-                        documentBlanks = view.DocumentBlanks;
-                        LoadData();
-                    }
+                    Program.ConfigGrid(logic.Read(null), dataGridView);
                 }
                 catch (Exception ex)
                 {
