@@ -35,13 +35,6 @@ namespace LawFirmDatabaseImplement.Implements
         {
             using (var context = new LawFirmDatabase())
             {
-                //List<Order> Ord = context.Orders
-                //    .ToList();
-                //foreach (var ord in Ord)
-                //{
-                //    context.Remove(ord);
-                //}
-                //context.SaveChanges();
                 return context.Orders
                     .Include(rec => rec.Document)
                     .Include(rec => rec.Client)
