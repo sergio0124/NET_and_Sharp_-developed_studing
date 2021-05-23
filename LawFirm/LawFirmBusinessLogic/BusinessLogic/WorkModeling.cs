@@ -63,30 +63,19 @@ namespace LawFirmBusinessLogic.BusinessLogic
             }
             await Task.Run(() =>
             {
-                foreach (var order in orders)
+               foreach (var order in orders)
                 {
-                    // пытаемся назначить заказ на исполнителя
+                    // заказ на исполнителя
                     try
                     {
-                        _orderLogic.TakeOrderInWork(new ChangeStatusBindingModel
-                        {
-                            OrderId = order.Id,
-                            ImplementerId = implementer.Id
+                        _orderLogic.TakeOrderInWork(new ChangeStatusBindingModel { OrderId = order.Id, ImplementerId = implementer.Id });
+                        Thread.Sleep(implementer.WorkingTime * rnd.Next(1, 5) * order.Count);
+                        _orderLogic.FinishOrder(new ChangeStatusBindingModel { OrderId = order.Id,
+                            ImplementerId = implementer.Id 
                         });
-                        // делаем работу
-                        Thread.Sleep(implementer.WorkingTime * rnd.Next(1, 5) *
-                        order.Count);
-                        _orderLogic.FinishOrder(new ChangeStatusBindingModel
-                        {
-                            OrderId =
-                       order.Id,
-                            ImplementerId=implementer.Id
-                        });
-                        // отдыхаем
                         Thread.Sleep(implementer.PauseTime);
                     }
-                    catch (Exception) { 
-                        }
+                    catch (Exception) { }
                 }
             });
         }
