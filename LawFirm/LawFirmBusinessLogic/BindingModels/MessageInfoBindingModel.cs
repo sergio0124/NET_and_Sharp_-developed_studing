@@ -20,5 +20,9 @@ namespace LawFirmBusinessLogic.BindingModels
         public string Body { get; set; }
         [DataMember]
         public DateTime DateDelivery { get; set; }
+        [DataMember]
+        public int? ToSkip { get; set; }
+        [DataMember]
+        public int? ToTake { get; set; }
     }
 }

@@ -35,22 +35,18 @@ namespace LawFirmDatabaseImplement.Implements
             }
             using (var context = new LawFirmDatabase())
             {
-                string ClientName = context.Clients.FirstOrDefault(rec => rec.Id == model.ClientId)?.Email;
-                return context.MessageInfos
-                .Where(rec => (model.ClientId.HasValue && rec.ClientId ==
-               model.ClientId) ||
-                (!model.ClientId.HasValue && rec.DateDelivery.Date ==
-               model.DateDelivery.Date) ||
-                (rec.SenderName==ClientName))
-                .Select(rec => new MessageInfoViewModel
+                if (model.ToSkip.HasValue && model.ToTake.HasValue && !model.ClientId.HasValue)
                 {
-                    MessageId = rec.MessageId,
-                    SenderName = rec.SenderName,
-                    DateDelivery = rec.DateDelivery,
-                    Subject = rec.Subject,
-                    Body = rec.Body
-                })
-               .ToList();
+                    return context.MessageInfos.Skip((int)model.ToSkip).Take((int)model.ToTake)
+                    .Select(CreateModel).ToList();
+                }
+                return context.MessageInfos
+                .Where(rec => (model.ClientId.HasValue && rec.ClientId == model.ClientId) ||
+                (!model.ClientId.HasValue && rec.DateDelivery.Date == model.DateDelivery.Date))
+                .Skip(model.ToSkip ?? 0)
+                .Take(model.ToTake ?? context.MessageInfos.Count())
+                .Select(CreateModel)
+                .ToList();
             }
         }
         public void Insert(MessageInfoBindingModel model)
@@ -76,6 +72,16 @@ namespace LawFirmDatabaseImplement.Implements
                 context.SaveChanges();
             }
         }
-
+        private MessageInfoViewModel CreateModel(MessageInfo model)
+        {
+            return new MessageInfoViewModel
+            {
+                MessageId = model.MessageId,
+                SenderName = model.SenderName,
+                DateDelivery = model.DateDelivery,
+                Subject = model.Subject,
+                Body = model.Body
+            };
+        }
     }
 }

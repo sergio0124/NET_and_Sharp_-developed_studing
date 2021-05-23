@@ -15,7 +15,8 @@ namespace LawFirmBusinessLogic.BusinessLogic
         private readonly IOrderStorage _orderStorage;
         private readonly IStorageStorage _storageStorage;
         private readonly IDocumentStorage _documentStorage;
-        public OrderLogic(IOrderStorage orderStorage, IDocumentStorage documentStorage, IStorageStorage storageStorage)
+        private readonly IClientStorage _clientStorage;
+        public OrderLogic(IOrderStorage orderStorage, IDocumentStorage documentStorage, IStorageStorage storageStorage, IClientStorage clientStorage)
         {
             _storageStorage = storageStorage;
             _documentStorage = documentStorage;
