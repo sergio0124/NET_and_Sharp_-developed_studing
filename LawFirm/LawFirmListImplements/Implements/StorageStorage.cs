@@ -191,7 +191,7 @@ namespace LawFirmListImplement.Implements
             throw new NotImplementedException();
         }
 
-        public void CheckBlanks(DocumentViewModel model, int blankCountInOrder)
+        public bool CheckBlanks(DocumentViewModel model, int blankCountInOrder)
         {
             throw new NotImplementedException();
         }

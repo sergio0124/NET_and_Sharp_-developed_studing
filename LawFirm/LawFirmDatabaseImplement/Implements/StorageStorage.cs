@@ -207,7 +207,7 @@ namespace LawFirmDatabaseImplement.Implements
             return storage;
         }
 
-        public void CheckBlanks(DocumentViewModel model, int blankCountInOrder)
+        public bool CheckBlanks(DocumentViewModel model, int blankCountInOrder)
         {
             using (var context = new LawFirmDatabase())
             {
@@ -247,13 +247,12 @@ namespace LawFirmDatabaseImplement.Implements
                         {
                             transaction.Rollback();
 
-                            throw new Exception("Не хватает компонентов для изготовления данного печатного изделия!");
+                           return false;
                         }
                     }
-
                     context.SaveChanges();
-
                     transaction.Commit();
+                    return true;
                 }
             }
         }
