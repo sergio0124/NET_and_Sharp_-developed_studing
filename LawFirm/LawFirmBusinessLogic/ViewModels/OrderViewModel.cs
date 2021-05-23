@@ -38,10 +38,10 @@ namespace LawFirmBusinessLogic.ViewModels
         [Column(title: "Статус", width: 100)]
         [DataMember]
         public OrderStatus Status { get; set; }
-        [Column(title: "Дата создания", width: 100)]
+        [Column(title: "Дата создания", width: 100,format:"R")]
         [DataMember]
         public DateTime DateCreate { get; set; }
-        [Column(title: "Дата выполнения", width: 100)]
+        [Column(title: "Дата выполнения", width: 100, format: "R")]
         [DataMember]
         public DateTime? DateImplement { get; set; }
 

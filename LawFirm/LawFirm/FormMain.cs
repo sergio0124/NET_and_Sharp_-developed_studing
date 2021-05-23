@@ -1,6 +1,7 @@
 ﻿using LawFirmBusinessLogic.BindingModels;
 using LawFirmBusinessLogic.BusinessLogic;
 using System;
+using System.Reflection;
 using System.Windows.Forms;
 using Unity;
 namespace LawFirmView
@@ -95,11 +96,12 @@ namespace LawFirmView
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    _reportLogic.SaveDocumentsToWordFile(new ReportBindingModel
+                    MethodInfo method = _reportLogic.GetType().GetMethod("SaveDocumentsToWordFile");
+                    method.Invoke(_reportLogic, new object[] { new ReportBindingModel
                     {
                         FileName =
                    dialog.FileName
-                    });
+                    } });
                     MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
                    MessageBoxIcon.Information);
                 }
@@ -125,11 +127,12 @@ namespace LawFirmView
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    _reportLogic.SaveStoragesToWordFile(new ReportBindingModel
+                    MethodInfo method = _reportLogic.GetType().GetMethod("SaveStoragesToWordFile");
+                    method.Invoke(_reportLogic, new object[] { new ReportBindingModel
                     {
                         FileName =
                    dialog.FileName
-                    });
+                    } });
                     MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
                    MessageBoxIcon.Information);
                 }

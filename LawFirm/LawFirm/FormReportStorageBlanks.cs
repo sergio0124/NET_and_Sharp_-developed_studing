@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -59,10 +60,11 @@ namespace LawFirmView
                 {
                     try
                     {
-                        logic.SaveStorageBlanksToExcelFile(new ReportBindingModel
+                        MethodInfo method = logic.GetType().GetMethod("SaveStorageBlanksToExcelFile");
+                        method.Invoke(logic, new object[] { new ReportBindingModel
                         {
                             FileName = dialog.FileName
-                        });
+                        } });
                         MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)

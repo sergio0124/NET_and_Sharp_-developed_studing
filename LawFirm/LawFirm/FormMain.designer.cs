@@ -47,13 +47,9 @@
             this.buttonPayOrder = new System.Windows.Forms.Button();
             this.buttonRef = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.письмаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокСкладовToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.бланкиПоСкладамToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.сводкаПоЗаказамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.клиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.исполнителиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.запускРаботToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -175,7 +171,6 @@
             this.письмаToolStripMenuItem.Name = "письмаToolStripMenuItem";
             this.письмаToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
             this.письмаToolStripMenuItem.Text = "Письма";
-            this.письмаToolStripMenuItem.Click += new System.EventHandler(this.письмаToolStripMenuItem_Click);
             // 
             // создатьБэкапToolStripMenuItem
             // 

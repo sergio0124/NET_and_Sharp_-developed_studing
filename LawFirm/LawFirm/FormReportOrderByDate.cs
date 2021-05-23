@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -61,12 +62,13 @@ namespace LawFirmView
                 {
                     try
                     {
-                        logic.SaveOrderReportByDateToPdfFile(new ReportBindingModel
+                        MethodInfo method = logic.GetType().GetMethod("SaveOrderReportByDateToPdfFile");
+                        method.Invoke(logic, new object[] { new ReportBindingModel
                         {
                             FileName = dialog.FileName,
                             DateFrom = dateTimePickerFrom.Value,
                             DateTo = dateTimePickerTo.Value
-                        });
+                        } });
                         MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                     }
