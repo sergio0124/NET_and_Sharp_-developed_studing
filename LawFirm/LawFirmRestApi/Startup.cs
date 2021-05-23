@@ -27,6 +27,10 @@ namespace LawFirmRestApi
             services.AddTransient<ClientLogic>();
             services.AddTransient<DocumentLogic>();
             services.AddTransient<MailLogic>();
+            services.AddTransient<IStorageStorage, StorageStorage>();
+            services.AddTransient<IBlankStorage, BlankStorage>();
+            services.AddTransient<StorageLogic>();
+            services.AddTransient<BlankLogic>();
             services.AddControllers().AddNewtonsoftJson();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

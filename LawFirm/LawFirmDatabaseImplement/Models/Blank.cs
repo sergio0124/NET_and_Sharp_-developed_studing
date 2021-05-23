@@ -13,6 +13,7 @@ namespace LawFirmDatabaseImplement.Models
         public string BlankName { get; set; }
         [ForeignKey("BlankId")]
         public virtual List<DocumentBlank> DocumentBlanks { get; set; }
-
+        [ForeignKey("BlankId")]
+        public List<StorageBlank> StorageBlanks { get; set; }
     }
 }
