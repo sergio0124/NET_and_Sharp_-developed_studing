@@ -13,9 +13,12 @@ namespace LawFirmBusinessLogic.BusinessLogic
     {
         private readonly object locker = new object();
         private readonly IOrderStorage _orderStorage;
-        private readonly IClientStorage _clientStorage;
-        public OrderLogic(IOrderStorage orderStorage, IClientStorage clientStorage)
+        private readonly IStorageStorage _storageStorage;
+        private readonly IDocumentStorage _documentStorage;
+        public OrderLogic(IOrderStorage orderStorage, IDocumentStorage documentStorage, IStorageStorage storageStorage)
         {
+            _storageStorage = storageStorage;
+            _documentStorage = documentStorage;
             _orderStorage = orderStorage;
             _clientStorage = clientStorage;
         }
@@ -29,6 +32,7 @@ namespace LawFirmBusinessLogic.BusinessLogic
             {
                 return new List<OrderViewModel> { _orderStorage.GetElement(model) };
             }
+
             return _orderStorage.GetFilteredList(model);
         }
         public void CreateOrder(CreateOrderBindingModel model)
@@ -58,6 +62,7 @@ model.ClientId
         {
             lock (locker)
             {
+                OrderStatus status = OrderStatus.Выполняется;
                 var order = _orderStorage.GetElement(new OrderBindingModel
                 {
                     Id = model.OrderId
@@ -66,15 +71,19 @@ model.ClientId
                 {
                     throw new Exception("Не найден заказ");
                 }
-                if (order.Status != OrderStatus.Принят)
+                if (order.Status != OrderStatus.Принят && order.Status!=OrderStatus.Требуются_бланки)
                 {
-                    throw new Exception("Заказ не в статусе \"Принят\"");
+                    throw new Exception("Заказ не в статусе \"Принят\" или \"Требуются_бланки\"");
                 }
-                if (order.ImplementerId.HasValue)
+                if (order.ImplementerId.HasValue && order.Status != OrderStatus.Требуются_бланки)
                 {
                     throw new Exception("У заказа уже есть исполнитель");
                 }
 
+                if (!_storageStorage.CheckBlanks(_documentStorage.GetElement(new DocumentBindingModel { Id = order.DocumentId }), order.Count))
+                {
+                    status = OrderStatus.Требуются_бланки;
+                }
                 _orderStorage.Update(new OrderBindingModel
                 {
                     Id = order.Id,
@@ -85,7 +94,7 @@ model.ClientId
                     Sum = order.Sum,
                     DateCreate = order.DateCreate,
                     DateImplement = DateTime.Now,
-                    Status = OrderStatus.Выполняется
+                    Status = status
                 });
 
                 MailLogic.MailSendAsync(new MailSendInfo
@@ -112,7 +121,11 @@ order.ClientId
             {
                 throw new Exception("Не найден заказ");
             }
-            if (order.Status != OrderStatus.Выполняется)
+            if (order.Status == OrderStatus.Требуются_бланки && _storageStorage.CheckBlanks(_documentStorage.GetElement(new DocumentBindingModel { Id = order.DocumentId }), order.Count))
+            {
+                order.Status = OrderStatus.Выполняется;
+            }
+            else if (order.Status != OrderStatus.Выполняется)
             {
                 throw new Exception("Заказ не в статусе \"Выполняется\"");
             }

@@ -231,11 +231,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="Unity.Abstractions, Version=5.11.7.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.11.10\lib\net47\Unity.Abstractions.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Unity.Container, Version=5.11.11.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.11.10\lib\net47\Unity.Container.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -312,6 +310,36 @@
     <Compile Include="FormMain.designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReportOrderByDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportOrderByDate.Designer.cs">
+      <DependentUpon>FormReportOrderByDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReportStorageBlanks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportStorageBlanks.Designer.cs">
+      <DependentUpon>FormReportStorageBlanks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStorage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStorage.Designer.cs">
+      <DependentUpon>FormStorage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStorageReplenishment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStorageReplenishment.Designer.cs">
+      <DependentUpon>FormStorageReplenishment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStorages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStorages.Designer.cs">
+      <DependentUpon>FormStorages.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormReportDocumentBlanks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -370,6 +398,21 @@
       <DependentUpon>FormMain.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormReportOrderByDate.resx">
+      <DependentUpon>FormReportOrderByDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReportStorageBlanks.resx">
+      <DependentUpon>FormReportStorageBlanks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStorage.resx">
+      <DependentUpon>FormStorage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStorageReplenishment.resx">
+      <DependentUpon>FormStorageReplenishment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStorages.resx">
+      <DependentUpon>FormStorages.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormReportDocumentBlanks.resx">
       <DependentUpon>FormReportDocumentBlanks.cs</DependentUpon>
     </EmbeddedResource>
@@ -386,7 +429,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Report.rdlc" />
+    <EmbeddedResource Include="ReportByDate.rdlc" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\LawFirmBusinessLogic.ViewModels.OrderByDateViewModel.datasource" />
     <None Include="Properties\DataSources\LawFirmBusinessLogic.ViewModels.ReportOrdersViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

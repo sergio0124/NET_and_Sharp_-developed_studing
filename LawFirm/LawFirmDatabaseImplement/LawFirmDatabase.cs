@@ -12,7 +12,7 @@ namespace LawFirmDatabaseImplement
         {
             if (optionsBuilder.IsConfigured == false)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=LawFirmDatabaseReznnLab6;Integrated Security=True;MultipleActiveResultSets=True;");
+                optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=LawFirmDatabaseReznLab6E;Integrated Security=True;MultipleActiveResultSets=True;");
             }
             base.OnConfiguring(optionsBuilder);
         }
@@ -20,6 +20,8 @@ namespace LawFirmDatabaseImplement
         public virtual DbSet<Document> Documents { set; get; }
         public virtual DbSet<DocumentBlank> DocumentBlanks { set; get; }
         public virtual DbSet<Order> Orders { set; get; }
+        public virtual DbSet<Storage> Storages { set; get; }
+        public virtual DbSet<StorageBlank> StorageBlanks { set; get; }
         public virtual DbSet<Client> Clients { set; get; }
         public virtual DbSet<Implementer> Implementers { set; get; }
         public virtual DbSet<MessageInfo> MessageInfos { set; get; }

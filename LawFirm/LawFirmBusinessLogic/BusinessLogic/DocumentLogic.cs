@@ -3,7 +3,6 @@ using LawFirmBusinessLogic.Interfaces;
 using LawFirmBusinessLogic.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace LawFirmBusinessLogic.BusinessLogic
 {
