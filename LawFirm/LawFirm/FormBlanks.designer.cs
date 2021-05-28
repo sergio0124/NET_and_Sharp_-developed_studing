@@ -38,7 +38,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(582, 13);
+            this.buttonAdd.Location = new System.Drawing.Point(380, 13);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(101, 23);
             this.buttonAdd.TabIndex = 1;
@@ -48,7 +48,7 @@
             // 
             // buttonRef
             // 
-            this.buttonRef.Location = new System.Drawing.Point(582, 43);
+            this.buttonRef.Location = new System.Drawing.Point(380, 43);
             this.buttonRef.Name = "buttonRef";
             this.buttonRef.Size = new System.Drawing.Size(101, 23);
             this.buttonRef.TabIndex = 2;
@@ -58,7 +58,7 @@
             // 
             // buttonDel
             // 
-            this.buttonDel.Location = new System.Drawing.Point(582, 73);
+            this.buttonDel.Location = new System.Drawing.Point(380, 73);
             this.buttonDel.Name = "buttonDel";
             this.buttonDel.Size = new System.Drawing.Size(101, 23);
             this.buttonDel.TabIndex = 3;
@@ -68,7 +68,7 @@
             // 
             // buttonUpd
             // 
-            this.buttonUpd.Location = new System.Drawing.Point(582, 103);
+            this.buttonUpd.Location = new System.Drawing.Point(380, 103);
             this.buttonUpd.Name = "buttonUpd";
             this.buttonUpd.Size = new System.Drawing.Size(101, 23);
             this.buttonUpd.TabIndex = 4;
@@ -84,7 +84,7 @@
             this.dataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
-            this.dataGridView.Size = new System.Drawing.Size(562, 424);
+            this.dataGridView.Size = new System.Drawing.Size(360, 424);
             this.dataGridView.TabIndex = 5;
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 450);
+            this.ClientSize = new System.Drawing.Size(489, 450);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.buttonUpd);
             this.Controls.Add(this.buttonDel);

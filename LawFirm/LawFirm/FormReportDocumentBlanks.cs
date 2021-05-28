@@ -1,6 +1,7 @@
 ﻿using LawFirmBusinessLogic.BindingModels;
 using LawFirmBusinessLogic.BusinessLogic;
 using System;
+using System.Reflection;
 using System.Windows.Forms;
 using Unity;
 
@@ -54,10 +55,11 @@ listElem.Item2 });
                 {
                     try
                     {
-                        logic.SaveDocumentBlanksToExcelFile(new ReportBindingModel
+                        MethodInfo method = logic.GetType().GetMethod("SaveDocumentBlanksToExcelFile");
+                        method.Invoke(logic, new object[] { new ReportBindingModel
                         {
                             FileName = dialog.FileName
-                        });
+                    }});
                         MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                     }

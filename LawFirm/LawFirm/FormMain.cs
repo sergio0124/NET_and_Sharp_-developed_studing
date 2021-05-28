@@ -1,6 +1,7 @@
 ﻿using LawFirmBusinessLogic.BindingModels;
 using LawFirmBusinessLogic.BusinessLogic;
 using System;
+using System.Reflection;
 using System.Windows.Forms;
 using Unity;
 namespace LawFirmView
@@ -11,13 +12,15 @@ namespace LawFirmView
         public new IUnityContainer Container { get; set; }
         private readonly OrderLogic _orderLogic;
         private readonly ReportLogic _reportLogic;
+        private readonly BackUpAbstractLogic _backUpLogic;
         private readonly WorkModeling workModeling;
-        public FormMain(OrderLogic orderLogic, ReportLogic reportLogic, WorkModeling workModeling)
+        public FormMain(OrderLogic orderLogic, ReportLogic reportLogic, WorkModeling workModeling, BackUpAbstractLogic backUpAbstract)
         {
             InitializeComponent();
             this._orderLogic = orderLogic;
             this._reportLogic = reportLogic;
             this.workModeling = workModeling;
+            this._backUpLogic = backUpAbstract;
         }
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -27,15 +30,7 @@ namespace LawFirmView
         {
             try
             {
-                var list = _orderLogic.Read(null);
-                if (list != null)
-                {
-                    dataGridView.DataSource = list;
-                    dataGridView.Columns[0].Visible = false;
-                    dataGridView.Columns[1].Visible = false;
-                    dataGridView.Columns[2].Visible = false;
-                    dataGridView.Columns[3].Visible = false;
-                }
+                Program.ConfigGrid(_orderLogic.Read(null), dataGridView);
             }
             catch (Exception ex)
             {
@@ -101,11 +96,12 @@ namespace LawFirmView
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    _reportLogic.SaveDocumentsToWordFile(new ReportBindingModel
+                    MethodInfo method = _reportLogic.GetType().GetMethod("SaveDocumentsToWordFile");
+                    method.Invoke(_reportLogic, new object[] { new ReportBindingModel
                     {
                         FileName =
                    dialog.FileName
-                    });
+                    } });
                     MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
                    MessageBoxIcon.Information);
                 }
@@ -131,11 +127,12 @@ namespace LawFirmView
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    _reportLogic.SaveStoragesToWordFile(new ReportBindingModel
+                    MethodInfo method = _reportLogic.GetType().GetMethod("SaveStoragesToWordFile");
+                    method.Invoke(_reportLogic, new object[] { new ReportBindingModel
                     {
                         FileName =
                    dialog.FileName
-                    });
+                    } });
                     MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
                    MessageBoxIcon.Information);
                 }
@@ -177,6 +174,29 @@ namespace LawFirmView
         {
             var form = Container.Resolve<FormMail>();
             form.ShowDialog();
+        }
+
+        private void создатьБэкапToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_backUpLogic != null)
+                {
+                    var fbd = new FolderBrowserDialog();
+                    if (fbd.ShowDialog() == DialogResult.OK)
+                    {
+                        _backUpLogic.CreateArchive(fbd.SelectedPath);
+                        MessageBox.Show("Бекап создан", "Сообщение",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
+            }
+
         }
     }
 }
