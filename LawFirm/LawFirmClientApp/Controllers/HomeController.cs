@@ -20,8 +20,7 @@ namespace DocumentShopClientApp.Controllers
             {
                 return Redirect("~/Home/Enter");
             }
-            return
-            View(APIClient.GetRequest<List<OrderViewModel>>($"api/main/getorders?clientId={Program.Client.Id}"));
+            return View(APIClient.GetRequest<List<OrderViewModel>>($"api/main/getorders?clientId={Program.Client.Id}"));
         }
         [HttpGet]
         public IActionResult Privacy()
@@ -94,8 +93,7 @@ namespace DocumentShopClientApp.Controllers
             if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password)
             && !string.IsNullOrEmpty(fio))
             {
-                APIClient.PostRequest("api/client/register", new
-                ClientBindingModel
+                APIClient.PostRequest("api/client/register", new ClientBindingModel
                 {
                     ClientFIO = fio,
                     Email = login,
@@ -128,6 +126,17 @@ namespace DocumentShopClientApp.Controllers
                 Count = count
             });
             Response.Redirect("Index");
+        }
+        [HttpGet]
+        public IActionResult Messages(int page = 1)
+        {
+            if (Program.Client == null)
+            {
+                return Redirect("~/Home/Enter");
+            }
+            var temp = APIClient.GetRequest<(List<MessageInfoViewModel> list, bool hasNext)>($"api/main/getmessages?clientId={Program.Client.Id}&page={page}");
+            (List<MessageInfoViewModel>, bool, int) model = (temp.list, temp.hasNext, page);
+            return View(model);
         }
         [HttpPost]
         public decimal Calc(decimal count, int document)

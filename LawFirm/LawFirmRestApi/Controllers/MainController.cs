@@ -12,16 +12,14 @@ namespace LawFirmRestApi.Controllers
     public class MainController : ControllerBase
     {
         private readonly OrderLogic _order;
-
         private readonly DocumentLogic _document;
-
-        private readonly OrderLogic _main;
-
-        public MainController(OrderLogic order, DocumentLogic document, OrderLogic main)
+        private readonly MailLogic _mail;
+        private readonly int mailsOnPage = 2;
+        public MainController(OrderLogic order, DocumentLogic document, MailLogic mail)
         {
             _order = order;
             _document = document;
-            _main = main;
+            _mail = mail;
         }
 
         [HttpGet]
@@ -33,7 +31,15 @@ namespace LawFirmRestApi.Controllers
         [HttpGet]
         public List<OrderViewModel> GetOrders(int clientId) => _order.Read(new OrderBindingModel { ClientId = clientId });
 
+        [HttpGet]
+        public (List<MessageInfoViewModel>, bool) GetMessages(int clientId, int page)
+        {
+            var list = _mail.Read(new MessageInfoBindingModel { ClientId = clientId, ToSkip = (page - 1) * mailsOnPage, ToTake = mailsOnPage + 1 }).ToList();
+            var hasNext = !(list.Count() <= mailsOnPage);
+            return (list.Take(mailsOnPage).ToList(), hasNext);
+        }
+
         [HttpPost]
-        public void CreateOrder(CreateOrderBindingModel model) => _main.CreateOrder(model);
+        public void CreateOrder(CreateOrderBindingModel model) => _order.CreateOrder(model);
     }
 }

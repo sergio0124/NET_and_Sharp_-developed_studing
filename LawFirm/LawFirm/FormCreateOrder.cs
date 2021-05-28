@@ -1,5 +1,6 @@
 ﻿using LawFirmBusinessLogic.BindingModels;
 using LawFirmBusinessLogic.BusinessLogic;
+using LawFirmBusinessLogic.HelperModels;
 using LawFirmBusinessLogic.ViewModels;
 using System;
 using System.Collections.Generic;

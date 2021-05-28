@@ -22,11 +22,13 @@ namespace LawFirmRestApi
             services.AddTransient<IClientStorage, ClientStorage>();
             services.AddTransient<IOrderStorage, OrderStorage>();
             services.AddTransient<IDocumentStorage, DocumentStorage>();
-            services.AddTransient<IStorageStorage, StorageStorage>();
-            services.AddTransient<IBlankStorage, BlankStorage>();
+            services.AddTransient<IMessageInfoStorage, MessageInfoStorage>();
             services.AddTransient<OrderLogic>();
             services.AddTransient<ClientLogic>();
             services.AddTransient<DocumentLogic>();
+            services.AddTransient<MailLogic>();
+            services.AddTransient<IStorageStorage, StorageStorage>();
+            services.AddTransient<IBlankStorage, BlankStorage>();
             services.AddTransient<StorageLogic>();
             services.AddTransient<BlankLogic>();
             services.AddControllers().AddNewtonsoftJson();
